@@ -1,0 +1,1176 @@
+import React, { useState, useEffect, useRef } from "react";
+
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Chip from "@material-ui/core/Chip";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import SpeedIcon from "@material-ui/icons/Speed";
+import GroupIcon from "@material-ui/icons/Group";
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import CancelIcon from '@material-ui/icons/Cancel';
+import PersonIcon from "@material-ui/icons/Person";
+import FilterListIcon from '@material-ui/icons/FilterList';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import StarIcon from '@material-ui/icons/Star';
+import TimerIcon from '@material-ui/icons/Timer';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import BusinessIcon from '@material-ui/icons/Business';
+import ClearIcon from '@material-ui/icons/Clear';
+
+import { makeStyles } from "@material-ui/core/styles";
+import { toast } from "react-toastify";
+
+import ButtonWithSpinner from "../../components/ButtonWithSpinner";
+import { isArray } from "lodash";
+
+import useDashboard from "../../hooks/useDashboard";
+import useCompanies from "../../hooks/useCompanies";
+
+import { isEmpty } from "lodash";
+import moment from "moment";
+import api from "../../services/api";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(4),
+    maxWidth: "1400px",
+  },
+  header: {
+    marginBottom: theme.spacing(4),
+    background: "linear-gradient(135deg, #64748b 0%, #475569 100%)",
+    borderRadius: "24px",
+    padding: theme.spacing(4),
+    color: "white",
+    boxShadow: "0 20px 60px rgba(100, 116, 139, 0.2)",
+    position: "relative",
+    overflow: "hidden",
+    "&:before": {
+      content: '""',
+      position: "absolute",
+      top: "-50%",
+      right: "-10%",
+      width: "100px",
+      height: "100px",
+      background: "rgba(255,255,255,0.08)",
+      borderRadius: "50%",
+      transform: "scale(3)",
+    },
+  },
+  headerContent: {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(3),
+    position: "relative",
+    zIndex: 1,
+  },
+  headerIcon: {
+    fontSize: "52px",
+    opacity: 0.9,
+  },
+  headerTitle: {
+    fontWeight: 700,
+    fontSize: "32px",
+    marginBottom: theme.spacing(0.5),
+  },
+  headerSubtitle: {
+    opacity: 0.9,
+    fontSize: "16px",
+    fontWeight: 400,
+  },
+  filtersSection: {
+    background: "white",
+    borderRadius: "20px",
+    padding: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+    boxShadow: "0 8px 30px rgba(0,0,0,0.06)",
+    border: "1px solid #e2e8f0",
+  },
+  filtersTitle: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: theme.spacing(3),
+    color: "#1e293b",
+    fontWeight: 700,
+    fontSize: "20px",
+  },
+  metricsSection: {
+    marginBottom: theme.spacing(5),
+  },
+  sectionTitle: {
+    fontWeight: 700,
+    fontSize: "24px",
+    color: "#1e293b",
+    marginBottom: theme.spacing(4),
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(1),
+  },
+  attendantsHighlightSection: {
+    marginBottom: theme.spacing(4),
+  },
+  // Cards Modernos com Ícones Integrados - SIMPLIFICADOS
+  modernCard: {
+    borderRadius: "24px",
+    padding: theme.spacing(4),
+    position: "relative",
+    overflow: "hidden",
+    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+    cursor: "pointer",
+    border: "1px solid rgba(255,255,255,0.2)",
+    minHeight: "180px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    "&:hover": {
+      transform: "translateY(-8px)",
+      boxShadow: "0 25px 80px rgba(0,0,0,0.15)",
+      "& $cardBackgroundIcon": {
+        transform: "scale(1.1) rotate(-10deg)",
+        opacity: 0.15,
+      },
+    },
+  },
+  cardBackgroundIcon: {
+    position: "absolute",
+    top: "20px",
+    right: "20px",
+    fontSize: "80px",
+    opacity: 0.1,
+    transition: "all 0.4s ease",
+    zIndex: 0,
+  },
+  cardContent: {
+    position: "relative",
+    zIndex: 2,
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+  },
+  cardIcon: {
+    fontSize: "48px",
+    marginBottom: theme.spacing(2),
+  },
+  cardTitle: {
+    fontSize: "16px",
+    fontWeight: 600,
+    marginBottom: theme.spacing(1),
+    opacity: 0.8,
+  },
+  cardValue: {
+    fontSize: "32px",
+    fontWeight: 700,
+    lineHeight: 1.2,
+    marginTop: "auto",
+  },
+  // Estilos específicos para cada tipo de card
+  pendingCard: {
+    background: "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)",
+    boxShadow: "0 8px 30px rgba(100, 116, 139, 0.15)",
+    "& $cardIcon": {
+      color: "#64748b",
+    },
+    "& $cardTitle": {
+      color: "#475569",
+    },
+    "& $cardValue": {
+      color: "#1e293b",
+    },
+    "& $cardBackgroundIcon": {
+      color: "#64748b",
+    },
+  },
+  activeCard: {
+    background: "linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)",
+    boxShadow: "0 8px 30px rgba(5, 150, 105, 0.15)",
+    "& $cardIcon": {
+      color: "#059669",
+    },
+    "& $cardTitle": {
+      color: "#047857",
+    },
+    "& $cardValue": {
+      color: "#065f46",
+    },
+    "& $cardBackgroundIcon": {
+      color: "#059669",
+    },
+  },
+  finishedCard: {
+    background: "linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)",
+    boxShadow: "0 8px 30px rgba(124, 58, 237, 0.15)",
+    "& $cardIcon": {
+      color: "#7c3aed",
+    },
+    "& $cardTitle": {
+      color: "#6d28d9",
+    },
+    "& $cardValue": {
+      color: "#581c87",
+    },
+    "& $cardBackgroundIcon": {
+      color: "#7c3aed",
+    },
+  },
+  cancelledCard: {
+    background: "linear-gradient(135deg, #fef2f2 0%, #fecaca 100%)",
+    boxShadow: "0 8px 30px rgba(220, 38, 38, 0.15)",
+    "& $cardIcon": {
+      color: "#dc2626",
+    },
+    "& $cardTitle": {
+      color: "#b91c1c",
+    },
+    "& $cardValue": {
+      color: "#991b1b",
+    },
+    "& $cardBackgroundIcon": {
+      color: "#dc2626",
+    },
+  },
+  leadsCard: {
+    background: "linear-gradient(135deg, #fffbeb 0%, #fde68a 100%)",
+    boxShadow: "0 8px 30px rgba(217, 119, 6, 0.15)",
+    "& $cardIcon": {
+      color: "#d97706",
+    },
+    "& $cardTitle": {
+      color: "#b45309",
+    },
+    "& $cardValue": {
+      color: "#92400e",
+    },
+    "& $cardBackgroundIcon": {
+      color: "#d97706",
+    },
+  },
+  timeCard: {
+    background: "linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%)",
+    boxShadow: "0 8px 30px rgba(8, 145, 178, 0.15)",
+    "& $cardIcon": {
+      color: "#0891b2",
+    },
+    "& $cardTitle": {
+      color: "#0e7490",
+    },
+    "& $cardValue": {
+      color: "#164e63",
+    },
+    "& $cardBackgroundIcon": {
+      color: "#0891b2",
+    },
+  },
+  waitCard: {
+    background: "linear-gradient(135deg, #fef7ed 0%, #fed7aa 100%)",
+    boxShadow: "0 8px 30px rgba(194, 65, 12, 0.15)",
+    "& $cardIcon": {
+      color: "#c2410c",
+    },
+    "& $cardTitle": {
+      color: "#9a3412",
+    },
+    "& $cardValue": {
+      color: "#7c2d12",
+    },
+    "& $cardBackgroundIcon": {
+      color: "#c2410c",
+    },
+  },
+  dateCard: {
+    background: "linear-gradient(135deg, #fdf2f8 0%, #fbcfe8 100%)",
+    boxShadow: "0 8px 30px rgba(190, 24, 93, 0.15)",
+    "& $cardIcon": {
+      color: "#be185d",
+    },
+    "& $cardTitle": {
+      color: "#9d174d",
+    },
+    "& $cardValue": {
+      color: "#831843",
+    },
+    "& $cardBackgroundIcon": {
+      color: "#be185d",
+    },
+  },
+  npsCard: {
+    background: "linear-gradient(135deg, #f0fdf4 0%, #bbf7d0 100%)",
+    boxShadow: "0 8px 30px rgba(34, 197, 94, 0.15)",
+    "& $cardIcon": {
+      color: "#22c55e",
+    },
+    "& $cardTitle": {
+      color: "#16a34a",
+    },
+    "& $cardValue": {
+      color: "#14532d",
+    },
+    "& $cardBackgroundIcon": {
+      color: "#22c55e",
+    },
+  },
+  filterButton: {
+    background: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
+    borderRadius: "16px",
+    padding: theme.spacing(2, 4),
+    color: "white",
+    fontWeight: 600,
+    textTransform: "none",
+    minHeight: "56px",
+    fontSize: "16px",
+    boxShadow: "0 4px 15px rgba(59, 130, 246, 0.3)",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      background: "linear-gradient(135deg, #2563eb 0%, #1e40af 100%)",
+      boxShadow: "0 8px 25px rgba(59, 130, 246, 0.4)",
+      transform: "translateY(-2px)",
+    },
+  },
+  clearButton: {
+    background: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)",
+    borderRadius: "16px",
+    color: "white",
+    fontWeight: 600,
+    textTransform: "none",
+    minHeight: "56px",
+    boxShadow: "0 4px 15px rgba(239, 68, 68, 0.3)",
+    "&:hover": {
+      background: "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)",
+      transform: "translateY(-2px)",
+    },
+  },
+  formControl: {
+    minWidth: "100%",
+    "& .MuiOutlinedInput-root": {
+      borderRadius: "12px",
+      backgroundColor: "#f8fafc",
+      "&:hover": {
+        backgroundColor: "#f1f5f9",
+      },
+    },
+    "& .MuiInputLabel-root": {
+      color: "#64748b",
+      fontWeight: 500,
+    },
+  },
+  textField: {
+    width: "100%",
+    "& .MuiOutlinedInput-root": {
+      borderRadius: "12px",
+      backgroundColor: "#f8fafc",
+      "&:hover": {
+        backgroundColor: "#f1f5f9",
+      },
+    },
+    "& .MuiInputLabel-root": {
+      color: "#64748b",
+      fontWeight: 500,
+    },
+  },
+  attendantsTable: {
+    "& .MuiTableHead-root": {
+      background: "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)",
+    },
+    "& .MuiTableCell-head": {
+      fontWeight: 700,
+      color: "#1e293b",
+      borderBottom: "2px solid #e2e8f0",
+      fontSize: "14px",
+    },
+    "& .MuiTableRow-root:nth-child(even)": {
+      backgroundColor: "#f8fafc",
+    },
+    "& .MuiTableCell-root": {
+      borderBottom: "1px solid #e2e8f0",
+      padding: theme.spacing(2),
+    },
+  },
+  performanceChip: {
+    fontWeight: 600,
+    minWidth: "90px",
+    borderRadius: "12px",
+  },
+  excellentChip: {
+    backgroundColor: "#dcfce7",
+    color: "#166534",
+  },
+  goodChip: {
+    backgroundColor: "#dbeafe",
+    color: "#1d4ed8",
+  },
+  averageChip: {
+    backgroundColor: "#fef3c7",
+    color: "#92400e",
+  },
+  poorChip: {
+    backgroundColor: "#fee2e2",
+    color: "#dc2626",
+  },
+  statusOnline: {
+    color: "#059669",
+    fontWeight: 600,
+  },
+  statusOffline: {
+    color: "#dc2626",
+    fontWeight: 600,
+  },
+  statusIndicator: {
+    fontSize: "10px",
+    marginRight: "8px",
+    animation: "$pulse 2s infinite",
+  },
+  "@keyframes pulse": {
+    "0%": { opacity: 1 },
+    "50%": { opacity: 0.7 },
+    "100%": { opacity: 1 },
+  },
+  loadingContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "200px",
+  },
+  tableCard: {
+    borderRadius: "20px",
+    boxShadow: "0 8px 30px rgba(0,0,0,0.08)",
+    border: "none",
+    overflow: "hidden",
+  },
+}));
+
+const Dashboard = () => {
+  const dashboardRef = useRef();
+  const classes = useStyles();
+  const [counters, setCounters] = useState({});
+  const [attendants, setAttendants] = useState([]);
+  const [originalData, setOriginalData] = useState({ counters: {}, attendants: [] });
+  const [filterType, setFilterType] = useState(1);
+  const [period, setPeriod] = useState(0);
+  const [companyDueDate, setCompanyDueDate] = useState();
+  const [dateFrom, setDateFrom] = useState(
+    moment("1", "D").format("YYYY-MM-DD")
+  );
+
+  const getLastDayOfMonth = (date) => {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).toISOString().split('T')[0];
+  };
+
+  const [dateTo, setDateTo] = useState(getLastDayOfMonth(new Date()));
+  const [loading, setLoading] = useState(false);
+  const { find } = useDashboard();
+  const { finding } = useCompanies();
+  const [contagemEncerrados, setContagemEncerrados] = useState(null);
+  const [clickFilter, setClickFIlter] = useState(false);
+
+  // Estados para performance
+  const [attendantsPerformance, setAttendantsPerformance] = useState([]);
+  
+  // Estado para NPS
+  const [npsData, setNpsData] = useState(null);
+
+  // Função para buscar dados de NPS
+  const getNpsInformations = async () => {
+    try {
+      const params = {
+        initialDate: dateFrom,
+        finalDate: dateTo
+      };
+
+      console.log("=== BUSCANDO DADOS NPS ===");
+      const { data } = await api.get("/dashboard/nps-info", { params });
+      
+      if (data && data.length > 0) {
+        const npsInfo = data[0];
+        const totalNotas = npsInfo.total_notas || 1; // Evitar divisão por zero
+        
+        // Calcular percentuais
+        const percentagens = {
+          boa: ((npsInfo.boa || 0) / totalNotas) * 100,
+          media: ((npsInfo.media || 0) / totalNotas) * 100,
+          ruim: ((npsInfo.ruim || 0) / totalNotas) * 100,
+          total: totalNotas
+        };
+
+        // Calcular NPS Score (% Promotores - % Detratores)
+        const npsScore = percentagens.boa - percentagens.ruim;
+        
+        console.log("Dados NPS processados:", { ...percentagens, npsScore });
+        
+        setNpsData({
+          ...percentagens,
+          npsScore: Math.round(npsScore * 10) / 10, // Arredondar para 1 casa decimal
+          totalAvaliacoes: totalNotas
+        });
+      } else {
+        setNpsData(null);
+      }
+    } catch (error) {
+      console.error("Erro ao buscar informações NPS:", error);
+      setNpsData(null);
+    }
+  };
+
+  function formatNPS(npsScore) {
+    if (!npsScore && npsScore !== 0) return "-";
+    
+    const score = parseFloat(npsScore);
+    if (isNaN(score)) return "-";
+    
+    // Adicionar + para scores positivos
+    const formattedScore = score > 0 ? `+${score.toFixed(1)}` : score.toFixed(1);
+    return formattedScore;
+  }
+
+  function formatTime(seconds) {
+    if (!seconds || seconds === 0 || isNaN(seconds)) return "-";
+    
+    if (seconds < 60) {
+      return `${Math.round(seconds)}s`;
+    } else if (seconds < 3600) {
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = Math.round(seconds % 60);
+      return `${minutes}m ${remainingSeconds}s`;
+    } else {
+      const hours = Math.floor(seconds / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const remainingSeconds = Math.round(seconds % 60);
+      return `${hours}h ${minutes}m ${remainingSeconds}s`;
+    }
+  }
+
+  function formatTimeMinutes(minutes) {
+    if (!minutes || minutes === 0 || isNaN(minutes)) return "-";
+    return moment()
+      .startOf("day")
+      .add(minutes, "minutes")
+      .format("HH[h] mm[m]");
+  }
+
+  useEffect(() => {
+    async function firstLoad() {
+      await fetchData();
+    }
+    setTimeout(() => {
+      firstLoad();
+    }, 1000);
+  }, []);
+
+  async function handleChangePeriod(value) {
+    setPeriod(value);
+  }
+
+  async function handleChangeFilterType(value) {
+    setFilterType(value);
+    if (value === 1) {
+      setPeriod(0);
+    } else {
+      setDateFrom("");
+      setDateTo("");
+    }
+  }
+
+  // Função principal para buscar dados da API
+  async function fetchData() {
+    setLoading(true);
+
+    let params = {};
+
+    if (period > 0) {
+      params = { days: period };
+    }
+
+    if (!isEmpty(dateFrom) && moment(dateFrom).isValid()) {
+      params = { ...params, date_from: moment(dateFrom).format("YYYY-MM-DD") };
+    }
+
+    if (!isEmpty(dateTo) && moment(dateTo).isValid()) {
+      params = { ...params, date_to: moment(dateTo).format("YYYY-MM-DD") };
+    }
+
+    if (Object.keys(params).length === 0) {
+      toast.error("Parametrize o filtro");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      console.log("=== BUSCANDO DADOS DA API ===");
+      console.log("Parâmetros enviados:", params);
+
+      const data = await find(params);
+      console.log("=== DADOS RETORNADOS DA API ===");
+      console.log("Counters completo:", JSON.stringify(data.counters, null, 2));
+      console.log("Attendants:", data.attendants);
+
+      // Salvar dados originais
+      const originalAttendants = isArray(data.attendants) ? data.attendants : [];
+      setOriginalData({
+        counters: data.counters || {},
+        attendants: originalAttendants
+      });
+
+      let finalCounters = data.counters || {};
+      
+      // Buscar tempo médio de atendimento através do endpoint de relatórios
+      try {
+        const reportParams = {
+          dateStartParam: dateFrom,
+          dateEndParam: dateTo,
+          page: 1,
+          perPage: 1000
+        };
+
+        console.log("=== BUSCANDO DADOS DE RELATÓRIO PARA T.M. ===");
+        const reportResponse = await api.get('reports/tickets', { params: reportParams });
+        const tickets = reportResponse.data.items || [];
+        
+        console.log("Tickets do relatório:", tickets.length);
+
+        if (tickets.length > 0) {
+          // Filtrar tickets que têm dados de início e fim de atendimento
+          const ticketsWithAttendanceData = tickets.filter(ticket => {
+            // Precisa ter atendente e estar fechado
+            return ticket.attendant_user && 
+                   ticket.closed_by_user &&
+                   ticket.createdAt &&
+                   ticket.updatedAt;
+          });
+
+          console.log("Tickets com dados de atendimento:", ticketsWithAttendanceData.length);
+
+          if (ticketsWithAttendanceData.length > 0) {
+            const totalSupportTimeSeconds = ticketsWithAttendanceData.reduce((acc, ticket) => {
+              // Considera createdAt como início e updatedAt como fim do atendimento
+              // Em um cenário ideal, teria campos específicos para início e fim do atendimento
+              const startTime = new Date(ticket.createdAt);
+              const endTime = new Date(ticket.updatedAt);
+              const diffSeconds = (endTime - startTime) / 1000; // em segundos
+              
+              console.log(`Ticket ${ticket.id}: ${Math.round(diffSeconds)} segundos`);
+              return acc + Math.max(0, diffSeconds);
+            }, 0);
+
+            const avgSupportTimeSeconds = Math.round(totalSupportTimeSeconds / ticketsWithAttendanceData.length);
+            finalCounters.avgSupportTime = avgSupportTimeSeconds;
+            
+            console.log("Tempo médio de atendimento:", avgSupportTimeSeconds, "segundos");
+            console.log("Baseado em", ticketsWithAttendanceData.length, "tickets");
+          }
+        }
+      } catch (reportError) {
+        console.error("Erro ao buscar dados do relatório:", reportError);
+        // Fallback: tentar usar dados dos attendants se disponível
+        if (!finalCounters.avgSupportTime && originalAttendants.length > 0) {
+          const validTimes = originalAttendants
+            .map(att => parseInt(att.avgSupportTime) || parseInt(att.supportTime) || 0)
+            .filter(time => time > 0);
+          
+          if (validTimes.length > 0) {
+            // Se os dados originais estão em minutos, converter para segundos
+            const avgMinutes = validTimes.reduce((sum, time) => sum + time, 0) / validTimes.length;
+            finalCounters.avgSupportTime = Math.round(avgMinutes * 60); // Converter para segundos
+          }
+        }
+      }
+
+      // Definir dados finais
+      setCounters(finalCounters);
+      setAttendants(originalAttendants);
+      
+      // Atualizar performance
+      updatePerformanceData(originalAttendants);
+
+      // Buscar chats encerrados
+      await chatsEncerrados();
+
+      // Buscar dados de NPS
+      await getNpsInformations();
+
+    } catch (error) {
+      console.error("Erro ao buscar dados:", error);
+      toast.error("Erro ao carregar dados do dashboard");
+    }
+    
+    setLoading(false);
+  }
+
+  // Atualizar dados de performance - CORRIGIDO
+  function updatePerformanceData(attendantsData) {
+    console.log("=== ATUALIZANDO PERFORMANCE ===");
+    console.log("Attendants para performance:", attendantsData);
+
+    if (!attendantsData || attendantsData.length === 0) {
+      setAttendantsPerformance([]);
+      return;
+    }
+
+    const performanceData = attendantsData.map(attendant => {
+      console.log("=== PROCESSANDO PERFORMANCE ===");
+      console.log("Attendant:", attendant);
+      console.log("Todas as propriedades:", Object.keys(attendant));
+
+      // Total de atendimentos
+      const totalTickets = parseInt(attendant.tickets_count) || 
+                          parseInt(attendant.tickets_finished) || 0;
+      
+      // Avaliação média
+      const avgRating = parseFloat(attendant.avgRating) || 
+                       parseFloat(attendant.rating) || 0;
+      
+      // Tempo médio de atendimento (do momento que foi atendido até finalização)
+      const avgSupportTime = parseInt(attendant.avgSupportTime) || 0;
+
+      // Determinar performance baseada na avaliação - REGRAS CORRIGIDAS
+      let performance = "Sin reseñas";
+      
+      if (avgRating === 0 || !avgRating || isNaN(avgRating)) {
+        performance = "Sin reseñas";
+      } else if (avgRating > 9) {
+        performance = "Excelente";
+      } else if (avgRating > 7) {
+        performance = "Bien";
+      } else if (avgRating > 5) {
+        performance = "Regular";
+      } else {
+        performance = "Malo"; // 0 a 5
+      }
+
+      // Debug completo do status
+      console.log("=== VERIFICANDO STATUS ONLINE ===");
+      console.log("isOnline:", attendant.isOnline, typeof attendant.isOnline);
+      console.log("online:", attendant.online, typeof attendant.online);
+      console.log("status:", attendant.status);
+      
+      let status = "Offline";
+      
+      // Verificar todas as possibilidades
+      if (attendant.isOnline === true || attendant.isOnline === 1) {
+        status = "Online";
+      } else if (attendant.online === true || attendant.online === 1) {
+        status = "Online";
+      } else if (attendant.status === "online") {
+        status = "Online";
+      }
+      
+      console.log("Status determinado:", status);
+      console.log("Avaliação:", avgRating, "Performance determinada:", performance);
+
+      const result = {
+        name: attendant.name || `Atendente ${attendant.id}`,
+        totalAttendances: totalTickets,
+        avgRating: avgRating > 0 ? avgRating.toFixed(1) : "-",
+        status: status,
+        performance: performance
+      };
+
+      console.log("Performance final do attendant:", result);
+      return result;
+    });
+
+    console.log("Performance completa:", performanceData);
+    setAttendantsPerformance(performanceData);
+  }
+
+  const chatsEncerrados = async () => {
+    try {
+      const params = {
+        initialDate: dateFrom,
+        finalDate: dateTo
+      }
+
+      const { data } = await api.get('/dashboard/atendimentos-encerrados', { params });
+      setContagemEncerrados(data || 0);
+    } catch (error) {
+      console.error("Erro ao buscar chats encerrados:", error);
+      setContagemEncerrados(0);
+    }
+  }
+
+  useEffect(() => {
+    async function fetchCompanyData() {
+      await loadCompanies();
+    }
+    fetchCompanyData();
+  }, [])
+
+  const companyId = localStorage.getItem("companyId");
+  
+  const loadCompanies = async () => {
+    try {
+      const companiesList = await finding(companyId);
+      const date = localStorage.getItem("companyDueDate");
+      setCompanyDueDate(date);
+    } catch (e) {
+      console.error("Erro ao carregar empresas:", e);
+    }
+  };
+
+  function getPerformanceChipClass(performance) {
+    switch(performance) {
+      case "Excelente":
+        return `${classes.performanceChip} ${classes.excellentChip}`;
+      case "Bien":
+        return `${classes.performanceChip} ${classes.goodChip}`;
+      case "Regular":
+        return `${classes.performanceChip} ${classes.averageChip}`;
+      case "Malo":
+        return `${classes.performanceChip} ${classes.poorChip}`;
+      case "Sin reseñas":
+        return `${classes.performanceChip} ${classes.averageChip}`;
+      default:
+        return classes.performanceChip;
+    }
+  }
+
+  // Componente de Card Simplificado
+  const SimpleCard = ({ icon: Icon, title, value, cardClass, loading }) => (
+    <div className={`${classes.modernCard} ${cardClass}`}>
+      <Icon className={classes.cardBackgroundIcon} />
+      <div className={classes.cardContent}>
+        <Icon className={classes.cardIcon} />
+        <Typography className={classes.cardTitle}>
+          {title}
+        </Typography>
+        <Typography className={classes.cardValue}>
+          {loading ? <CircularProgress size={24} /> : value}
+        </Typography>
+      </div>
+    </div>
+  );
+
+  function renderFilters() {
+    return (
+      <Grid container spacing={3} alignItems="flex-end">
+        <Grid item xs={12} sm={6} md={4}>
+          <FormControl className={classes.formControl} variant="outlined">
+            <InputLabel>Tipo de Filtro</InputLabel>
+            <Select
+              value={filterType}
+              onChange={(e) => handleChangeFilterType(e.target.value)}
+              label="Tipo de Filtro"
+            >
+              <MenuItem value={1}>Por Data</MenuItem>
+              <MenuItem value={2}>Por Período</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        {filterType === 1 ? (
+          <>
+            <Grid item xs={12} sm={6} md={3}>
+              <TextField
+                label="Data Inicial"
+                type="date"
+                value={dateFrom}
+                onChange={(e) => setDateFrom(e.target.value)}
+                className={classes.textField}
+                variant="outlined"
+                InputLabelProps={{ shrink: true }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <TextField
+                label="Data Final"
+                type="date"
+                value={dateTo}
+                onChange={(e) => setDateTo(e.target.value)}
+                className={classes.textField}
+                variant="outlined"
+                InputLabelProps={{ shrink: true }}
+              />
+            </Grid>
+          </>
+        ) : (
+          <Grid item xs={12} sm={6} md={6}>
+            <FormControl className={classes.formControl} variant="outlined">
+              <InputLabel>Período</InputLabel>
+              <Select
+                value={period}
+                onChange={(e) => handleChangePeriod(e.target.value)}
+                label="Período"
+              >
+                <MenuItem value={0}>Selecione um período</MenuItem>
+                <MenuItem value={3}>Últimos 3 dias</MenuItem>
+                <MenuItem value={7}>Últimos 7 dias</MenuItem>
+                <MenuItem value={15}>Últimos 15 dias</MenuItem>
+                <MenuItem value={30}>Últimos 30 dias</MenuItem>
+                <MenuItem value={60}>Últimos 60 dias</MenuItem>
+                <MenuItem value={90}>Últimos 90 dias</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+        )}
+
+        <Grid item xs={12} sm={6} md={2}>
+          <ButtonWithSpinner
+            loading={loading}
+            onClick={() => {
+              fetchData();
+              setClickFIlter(prev => !prev);
+            }}
+            className={classes.filterButton}
+            fullWidth
+            variant="contained"
+            size="large"
+          >
+            Filtrar
+          </ButtonWithSpinner>
+        </Grid>
+      </Grid>
+    );
+  }
+
+  return (
+    <div style={{ backgroundColor: "#f1f5f9", minHeight: "100vh" }}>;
+      <Container maxWidth="xl" className={classes.container}>
+        
+        {/* Header Section */}
+        <Box className={classes.header}>
+          <div className={classes.headerContent}>
+            <DashboardIcon className={classes.headerIcon} />
+            <div>
+              <Typography className={classes.headerTitle}>
+                Indicadores Operativos
+              </Typography>
+              <Typography className={classes.headerSubtitle}>
+                Realice un seguimiento de las métricas clave de su negocio en tiempo real
+              </Typography>
+            </div>
+          </div>
+        </Box>
+
+        {/* Filters Section */}
+        <Paper className={classes.filtersSection} elevation={0}>
+          <Typography className={classes.filtersTitle}>
+            <FilterListIcon style={{ marginRight: 12 }} />
+            Filtros y configuraciones
+          </Typography>
+          {renderFilters()}
+        </Paper>
+
+        {/* Main Metrics Section */}
+        <Box className={classes.metricsSection}>
+          <Typography className={classes.sectionTitle}>
+            <TrendingUpIcon />
+            Principales indicadores
+          </Typography>
+          
+          {/* Primary KPIs Row */}
+          <Grid container spacing={4} style={{ marginBottom: "32px" }}>
+            <Grid item xs={12} sm={6} md={3}>
+              <SimpleCard
+                icon={GroupAddIcon}
+                title="Chats Pendientes"
+                value={counters.supportPending || 0}
+                cardClass={classes.pendingCard}
+                loading={loading}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <SimpleCard
+                icon={GroupIcon}
+                title="Chats Activos"
+                value={counters.supportHappening || 0}
+                cardClass={classes.activeCard}
+                loading={loading}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <SimpleCard
+                icon={AssignmentTurnedInIcon}
+                title="Chats Concluídos"
+                value={counters.supportFinished || 0}
+                cardClass={classes.finishedCard}
+                loading={loading}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <SimpleCard
+                icon={CancelIcon}
+                title="Chats Encerrados"
+                value={contagemEncerrados || 0}
+                cardClass={classes.cancelledCard}
+                loading={loading}
+              />
+            </Grid>
+          </Grid>
+
+          {/* Secondary KPIs Row - MODIFICADO: TODOS OS CARDS SEMPRE VISÍVEIS */}
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={6} md={3}>
+              <SimpleCard
+                icon={PersonIcon}
+                title="Leads"
+                value={counters.leads || 0}
+                cardClass={classes.leadsCard}
+                loading={loading}
+              />
+            </Grid>
+
+            {/* T.M. de Atendimento - SEMPRE VISÍVEL */}
+            <Grid item xs={12} sm={6} md={3}>
+              <SimpleCard
+                icon={AccessTimeIcon}
+                title="T.M. de Servicio"
+                value={counters.avgSupportTime && counters.avgSupportTime > 0 ? formatTime(counters.avgSupportTime) : "-"}
+                cardClass={classes.timeCard}
+                loading={loading}
+              />
+            </Grid>
+
+            {/* Card NPS - SEMPRE VISÍVEL */}
+            <Grid item xs={12} sm={6} md={3}>
+              <SimpleCard
+                icon={StarIcon}
+                title="NPS Score"
+                value={npsData && npsData.totalAvaliacoes > 0 ? formatNPS(npsData.npsScore) : "-"}
+                cardClass={classes.npsCard}
+                loading={loading}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <SimpleCard
+                icon={BusinessIcon}
+                title="Data Vencimento"
+                value={companyDueDate || "-"}
+                cardClass={classes.dateCard}
+                loading={loading}
+              />
+            </Grid>
+          </Grid>
+        </Box>
+
+        {/* Attendants Performance Highlight Section - TABELA CORRIGIDA */}
+        <Box className={classes.attendantsHighlightSection}>
+          <Typography className={classes.sectionTitle}>
+            <StarIcon />
+            Actuación de los asistentes - Destacado
+          </Typography>
+          
+          <Paper className={classes.tableCard} elevation={0}>
+            {loading ? (
+              <div className={classes.loadingContainer}>
+                <CircularProgress size={40} />
+              </div>
+            ) : (
+              <TableContainer>
+                <Table className={classes.attendantsTable}>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>
+                        <Box display="flex" alignItems="center">
+                          <PersonIcon style={{ marginRight: 8, color: "#64748b" }} />
+                          Asistente
+                        </Box>
+                      </TableCell>
+                      <TableCell align="center">
+                        <Box display="flex" alignItems="center" justifyContent="center">
+                          <StarIcon style={{ marginRight: 8, color: "#fbbf24" }} />
+                          Calificación promedio
+                        </Box>
+                      </TableCell>
+                      <TableCell align="center">
+                        <Box display="flex" alignItems="center" justifyContent="center">
+                          <FiberManualRecordIcon style={{ marginRight: 8, color: "#64748b" }} />
+                          Status
+                        </Box>
+                      </TableCell>
+                      <TableCell align="center">Performance</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {attendantsPerformance.length > 0 ? (
+                      attendantsPerformance.map((attendant, index) => (
+                        <TableRow key={index}>
+                          <TableCell>
+                            <Box display="flex" alignItems="center">
+                              <PersonIcon style={{ marginRight: 12, color: "#64748b" }} />
+                              <Typography variant="body1" style={{ fontWeight: 600 }}>
+                                {attendant.name}
+                              </Typography>
+                            </Box>
+                          </TableCell>
+                          <TableCell align="center">
+                            <Box display="flex" alignItems="center" justifyContent="center">
+                              <StarIcon style={{ color: "#fbbf24", marginRight: 6 }} />
+                              <Typography variant="body1" style={{ fontWeight: 600 }}>
+                                {attendant.avgRating}
+                              </Typography>
+                            </Box>
+                          </TableCell>
+                          <TableCell align="center">
+                            <Box display="flex" alignItems="center" justifyContent="center">
+                              <FiberManualRecordIcon 
+                                className={classes.statusIndicator}
+                                style={{ 
+                                  color: attendant.status === "Online" ? "#059669" : "#dc2626"
+                                }} 
+                              />
+                              <Typography 
+                                variant="body2" 
+                                className={attendant.status === "Online" ? classes.statusOnline : classes.statusOffline}
+                              >
+                                {attendant.status}
+                              </Typography>
+                            </Box>
+                          </TableCell>
+                          <TableCell align="center">
+                            <Chip
+                              label={attendant.performance}
+                              className={getPerformanceChipClass(attendant.performance)}
+                              size="small"
+                            />
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    ) : (
+                      <TableRow>
+                        <TableCell colSpan={4} align="center" style={{ padding: "60px" }}>
+                          <Box display="flex" flexDirection="column" alignItems="center">
+                            <PersonIcon style={{ fontSize: "64px", color: "#cbd5e1", marginBottom: "16px" }} />
+                            <Typography color="textSecondary" variant="h6" style={{ marginBottom: "8px" }}>
+                              {loading ? "Cargando datos.." : "No se encontró ningún asistente"}
+                            </Typography>
+                            {!loading && (
+                              <Typography color="textSecondary" variant="body2">
+                                Ajustar filtros o consultar el periodo seleccionado
+                              </Typography>
+                            )}
+                          </Box>
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            )}
+          </Paper>
+        </Box>
+
+      </Container>
+    </div>
+  );
+};
+
+export default Dashboard;

@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@date-io/date-fns": "^2.16.0",
     "@emotion/react": "^11.11.4",
@@ -24,6 +25,7 @@
     "axios": "^0.21.1",
     "chart.js": "^3.9.1",
     "chartjs-plugin-datalabels": "^2.1.0",
+    "cross-env": "^10.1.0",
     "date-fns": "^2.16.1",
     "emoji-mart": "^3.0.0",
     "formik": "^2.2.0",
@@ -75,7 +77,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider build",
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider build",
     "dev": "react-scripts --openssl-legacy-provider start",
     "builddev": "react-scripts build",
     "test": "react-scripts test",

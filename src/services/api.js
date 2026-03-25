@@ -1,12 +1,14 @@
 import axios from "axios";
 
+const baseURL = process.env.REACT_APP_API_URL;
+
 const api = axios.create({
-  baseURL: "http://192.168.1.7:4000",
+  baseURL,
   withCredentials: true,
 });
 
 export const openApi = axios.create({
-  baseURL: "http://192.168.1.7:4000"
+  baseURL
 });
 
 export default api;

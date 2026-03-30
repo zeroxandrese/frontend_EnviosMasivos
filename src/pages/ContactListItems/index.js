@@ -15,11 +15,16 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import MenuItem from "@material-ui/core/MenuItem";
+import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Box from "@material-ui/core/Box";
+import FilterListIcon from "@material-ui/icons/FilterList";
+import Typography from "@material-ui/core/Typography";
 
 import IconButton from "@material-ui/core/IconButton";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
@@ -117,6 +122,8 @@ const ContactListItems = () => {
   const [hasMore, setHasMore] = useState(false);
   const [contactList, setContactList] = useState({});
   const fileUploadRef = useRef(null);
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const { findById: findContactList } = useContactLists();
 
@@ -138,7 +145,7 @@ const ContactListItems = () => {
       const fetchContacts = async () => {
         try {
           const { data } = await api.get(`contact-list-items`, {
-            params: { searchParam, pageNumber, contactListId },
+            params: { searchParam, pageNumber, contactListId, limit: rowsPerPage },
           });
           dispatch({ type: "LOAD_CONTACTS", payload: data.contacts });
           setHasMore(data.hasMore);
@@ -245,6 +252,12 @@ const ContactListItems = () => {
     history.push("/contact-lists");
   };
 
+  const filteredContacts = contacts.filter(contact => {
+    if (statusFilter === "valid") return contact.isWhatsappValid;
+    if (statusFilter === "invalid") return !contact.isWhatsappValid;
+    return true;
+  });
+
   return (
     <MainContainer className={classes.mainContainer}>
       <ContactListItemModal
@@ -256,9 +269,8 @@ const ContactListItems = () => {
       <ConfirmationModal
         title={
           deletingContact
-            ? `${i18n.t("contactListItems.confirmationModal.deleteTitle")} ${
-                deletingContact.name
-              }?`
+            ? `${i18n.t("contactListItems.confirmationModal.deleteTitle")} ${deletingContact.name
+            }?`
             : `${i18n.t("contactListItems.confirmationModal.importTitlte")}`
         }
         open={confirmOpen}
@@ -275,7 +287,7 @@ const ContactListItems = () => {
           <>
             {i18n.t("contactListItems.confirmationModal.importMessage")}
             <a href={planilhaExemplo} download="planilha.xlsx">
-              Clique aqui para baixar planilha exemplo.
+              Haga clic aquí para descargar una hoja de cálculo de ejemplo.
             </a>
           </>
         )}
@@ -340,10 +352,46 @@ const ContactListItems = () => {
           </Grid>
         </Grid>
       </MainHeader>
+      <Box
+        mb={2}
+        p={2}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        style={{
+          backgroundColor:
+            statusFilter === "invalid"
+              ? "#ffe6e6"
+              : statusFilter === "valid"
+                ? "#e6ffed"
+                : "#f5f5f5",
+          borderRadius: 8,
+        }}
+      >
+        <Box display="flex" alignItems="center" gap={8}>
+          <FilterListIcon />
+          <Typography variant="subtitle2">
+            Filtrar contactos
+          </Typography>
+        </Box>
+
+        <TextField
+          select
+          size="small"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+          variant="outlined"
+          style={{ minWidth: 180, background: "white", borderRadius: 6 }}
+        >
+          <MenuItem value="all">Todos</MenuItem>
+          <MenuItem value="valid">✅ Válidos</MenuItem>
+          <MenuItem value="invalid">❌ Inválidos</MenuItem>
+        </TextField>
+      </Box>
       <Paper
         className={classes.mainPaper}
         variant="outlined"
-        onScroll={handleScroll}
+      //onScroll={handleScroll}
       >
         <>
           <input
@@ -378,7 +426,7 @@ const ContactListItems = () => {
           </TableHead>
           <TableBody>
             <>
-              {contacts.map((contact) => (
+              {filteredContacts.map((contact) => (
                 <TableRow key={contact.id}>
                   <TableCell align="center" style={{ width: "0%" }}>
                     <IconButton>
@@ -428,6 +476,17 @@ const ContactListItems = () => {
           </TableBody>
         </Table>
       </Paper>
+      <TablePagination
+        component="div"
+        count={hasMore ? -1 : contacts.length}
+        page={pageNumber - 1}
+        onPageChange={(e, newPage) => setPageNumber(newPage + 1)}
+        rowsPerPage={rowsPerPage}
+        onRowsPerPageChange={(e) => {
+          setRowsPerPage(parseInt(e.target.value, 10));
+          setPageNumber(1);
+        }}
+      />
     </MainContainer>
   );
 };

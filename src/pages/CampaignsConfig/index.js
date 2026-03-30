@@ -406,13 +406,13 @@ const CampaignsConfig = () => {
       
       // Limpa o formulário
       setVariable({ key: "", value: "" });
-      toast.success("Variável adicionada com sucesso!");
+      toast.success("Variable agregada exitosamente!");
       
     } catch (error) {
       console.error("Erro ao adicionar variável:", error);
       // Reverte o estado local em caso de erro
       setSettings(settings);
-      toast.error("Erro ao adicionar variável");
+      toast.error("Error al agregar variable");
       toastError(error);
     }
   };
@@ -429,12 +429,12 @@ const CampaignsConfig = () => {
       await api.post("/campaign-settings", { settings: updatedSettings });
       
       setSelectedKey(null);
-      toast.success("Variável removida com sucesso!");
+      toast.success("Variable eliminada correctamente!");
     } catch (error) {
-      console.error("Erro ao remover variável:", error);
+      console.error("Error al remover variável:", error);
       // Reverte o estado local em caso de erro
       setSettings(settings);
-      toast.error("Erro ao remover variável");
+      toast.error("Error al remover variável");
       toastError(error);
     }
   };
@@ -443,10 +443,10 @@ const CampaignsConfig = () => {
     setLoading(true);
     try {
       await api.post("/campaign-settings", { settings });
-      toast.success("Configurações salvas com sucesso!");
+      toast.success("La configuración se guardó correctamente!");
     } catch (error) {
-      console.error("Erro ao salvar configurações:", error);
-      toast.error("Erro ao salvar configurações");
+      console.error("Error al guardar la configuración:", error);
+      toast.error("Error al guardar la configuración");
       toastError(error);
     } finally {
       setLoading(false);
@@ -503,7 +503,7 @@ const CampaignsConfig = () => {
                   {i18n.t("campaignsConfig.title")}
                 </Typography>
                 <Typography className={classes.headerSubtitle}>
-                  Configure os intervalos e variáveis das campanhas de marketing
+                  Configura los intervalos y las variables para las campañas de marketing.
                 </Typography>
               </div>
             </div>
@@ -518,7 +518,7 @@ const CampaignsConfig = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Configurações de Intervalo
+                    Configuración de intervalos
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.intervalConfigs}
@@ -532,7 +532,7 @@ const CampaignsConfig = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Intervalo Médio
+                    Rango medio
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.avgInterval}s
@@ -546,7 +546,7 @@ const CampaignsConfig = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Eficiência
+                    Eficiencia
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.efficiency}
@@ -560,7 +560,7 @@ const CampaignsConfig = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Variáveis Criadas
+                    Variables creadas
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.variables}
@@ -574,7 +574,7 @@ const CampaignsConfig = () => {
           <Paper className={classes.filtersSection} elevation={0}>
             <Typography className={classes.filtersTitle}>
               <TimerIcon style={{ marginRight: 12 }} />
-              Configuração de Intervalos
+              Configuración de intervalos
             </Typography>
             
             {loading ? (
@@ -658,14 +658,14 @@ const CampaignsConfig = () => {
             <Box display="flex" justifyContent="space-between" alignItems="center" marginBottom={3}>
               <Typography className={classes.filtersTitle}>
                 <CodeIcon style={{ marginRight: 12 }} />
-                Gerenciamento de Variáveis
+                Gestión de variables
               </Typography>
               <button
                 className={classes.expandButton}
                 onClick={() => setShowVariablesSection(!showVariablesSection)}
               >
                 {showVariablesSection ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                {showVariablesSection ? "Ocultar" : "Mostrar"} Seção
+                {showVariablesSection ? "Ocultar" : "Mostrar"} Sección
               </button>
             </Box>
 
@@ -674,7 +674,7 @@ const CampaignsConfig = () => {
                 <Grid item xs={12}>
                   <Box display="flex" justifyContent="space-between" alignItems="center" marginBottom={2}>
                     <Typography variant="body2" color="textSecondary">
-                      As variáveis permitem personalizar suas mensagens de campanha automaticamente.
+                      Las variables te permiten personalizar automáticamente los mensajes de tu campaña.
                     </Typography>
                     <Button
                       onClick={() => setShowVariablesForm(!showVariablesForm)}
@@ -736,7 +736,7 @@ const CampaignsConfig = () => {
                     <Table size="small" className={classes.variablesTable}>
                       <TableHead>
                         <TableRow>
-                          <TableCell style={{ width: "1%" }}>Ações</TableCell>
+                          <TableCell style={{ width: "1%" }}>Comportamiento</TableCell>
                           <TableCell>{i18n.t("campaigns.settings.shortcut")}</TableCell>
                           <TableCell>{i18n.t("campaigns.settings.content")}</TableCell>
                         </TableRow>
@@ -774,10 +774,10 @@ const CampaignsConfig = () => {
                     <Box textAlign="center" padding={4} color="textSecondary">
                       <CodeIcon style={{ fontSize: 48, opacity: 0.3, marginBottom: 16 }} />
                       <Typography variant="h6" style={{ opacity: 0.7, marginBottom: 8 }}>
-                        Nenhuma variável criada
+                        No se crearon variables
                       </Typography>
                       <Typography variant="body2" style={{ opacity: 0.5 }}>
-                        Crie variáveis para personalizar suas campanhas automaticamente
+                        Crea variables para personalizar automáticamente tus campañas.
                       </Typography>
                     </Box>
                   </Grid>

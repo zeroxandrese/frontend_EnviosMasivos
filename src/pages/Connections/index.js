@@ -816,7 +816,7 @@ const Connections = () => {
                   {i18n.t("connections.title")} ({whatsApps.length})
                 </Typography>
                 <Typography className={classes.headerSubtitle}>
-                  Gerencie suas conexões com WhatsApp, Facebook e Instagram
+                  Gestiona tus conexiones con WhatsApp, Facebook e Instagram.
                 </Typography>
               </div>
             </div>
@@ -826,7 +826,7 @@ const Connections = () => {
           <Paper className={classes.filtersSection} elevation={0}>
             <Typography className={classes.filtersTitle}>
               <FilterList style={{ marginRight: 12 }} />
-              Buscar e Gerenciar Conexões
+              Buscar y gestionar conexiones
             </Typography>
             
             <div className={classes.filtersGroup}>
@@ -959,7 +959,7 @@ const Connections = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Total Conexões
+                    Conexiones totales
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.total}
@@ -1155,10 +1155,10 @@ const Connections = () => {
                               <Box className={classes.emptyState}>
                                 <DeviceHub className={classes.emptyStateIcon} />
                                 <Typography variant="h6" style={{ marginBottom: 8 }}>
-                                  {searchParam ? "Nenhuma conexão encontrada" : "Nenhuma conexão configurada"}
+                                  {searchParam ? "No se encontraron conexiones" : "No hay conexiones configuradas"}
                                 </Typography>
                                 <Typography variant="body2">
-                                  {searchParam ? "Tente ajustar sua busca" : "Configure sua primeira conexão para começar"}
+                                  {searchParam ? "Intenta ajustar tu búsqueda" : "Configura tu primera conexión para comenzar."}
                                 </Typography>
                               </Box>
                             </TableCell>

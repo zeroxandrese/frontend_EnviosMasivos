@@ -503,7 +503,7 @@ const Tags = () => {
                 {i18n.t("tags.title")}
               </Typography>
               <Typography className={classes.headerSubtitle}>
-                Gerencie as etiquetas do sistema de forma eficiente
+                Gestione las etiquetas del sistema de forma eficiente.
               </Typography>
             </div>
           </div>
@@ -513,7 +513,7 @@ const Tags = () => {
         <Paper className={`${classes.filtersSection} ${classes.fadeIn}`} elevation={0}>
           <Typography className={classes.filtersTitle}>
             <FilterListIcon style={{ marginRight: 12 }} />
-            Pesquisa e Ações
+            Investigación y Acciones
           </Typography>
           
           <div className={classes.filtersContent}>
@@ -596,7 +596,7 @@ const Tags = () => {
                           backgroundColor: tag.color || '#3b82f6',
                           color: "white",
                         }}
-                        label={tag.name || 'Nome não disponível'}
+                        label={tag.name || 'Nombre no disponible'}
                       />
                     </TableCell>
                     <TableCell align="center">
@@ -605,7 +605,7 @@ const Tags = () => {
                           {tag.contactsCount || 0}
                         </Typography>
                         <Typography variant="body2" color="textSecondary">
-                          {(tag.contactsCount || 0) === 1 ? 'contato' : 'contatos'}
+                          {(tag.contactsCount || 0) === 1 ? 'contacto' : 'contactos'}
                         </Typography>
                       </Box>
                     </TableCell>
@@ -640,12 +640,12 @@ const Tags = () => {
                     <TableCell colSpan={3} className={classes.emptyState}>
                       <LabelIcon className={classes.emptyIcon} />
                       <Typography variant="h6" style={{ marginBottom: 8 }}>
-                        {searchParam ? 'Nenhuma etiqueta encontrada' : 'Nenhuma etiqueta cadastrada'}
+                        {searchParam ? 'No se encontraron etiquetas' : 'No hay etiquetas registradas'}
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
                         {searchParam 
-                          ? 'Tente ajustar os termos da pesquisa'
-                          : 'Comece criando sua primeira etiqueta'
+                          ? 'Intenta ajustar tus términos de búsqueda'
+                          : 'Empieza por crear tu primera etiqueta'
                         }
                       </Typography>
                     </TableCell>

@@ -253,7 +253,7 @@ const MessagesAPI = () => {
       const companyId = user.companyId;
       const planConfigs = await getPlanCompany(undefined, companyId);
       if (!planConfigs.plan.useExternalApi) {
-        toast.error("Esta empresa não possui permissão para acessar essa página! Estamos lhe redirecionando.");
+        toast.error("Esta empresa no tiene permiso para acceder a esta página! Le estamos redirigiendo.");
         setTimeout(() => {
           history.push(`/`)
         }, 1000);
@@ -280,7 +280,7 @@ const MessagesAPI = () => {
           'Authorization': `Bearer ${values.token}` 
         }
       })
-      toast.success('Mensagem enviada com sucesso');
+      toast.success('Mensaje enviado exitosamente');
     } catch (err) {
       toastError(err);
     }
@@ -304,7 +304,7 @@ const MessagesAPI = () => {
           'Authorization': `Bearer ${values.token}`
         }
       })
-      toast.success('Mensagem enviada com sucesso');
+      toast.success('Mensaje enviado exitosamente');
     } catch (err) {
       toastError(err);
     }
@@ -393,7 +393,7 @@ const MessagesAPI = () => {
                   startIcon={isSubmitting ? <CircularProgress size={16} color="inherit" /> : <SendIcon />}
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
+                  {isSubmitting ? 'Enviando...' : 'Enviar Mensage'}
                 </Button>
               </Grid>
             </Grid>
@@ -508,7 +508,7 @@ const MessagesAPI = () => {
                   startIcon={isSubmitting ? <CircularProgress size={16} color="inherit" /> : <SendIcon />}
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Enviando...' : 'Enviar com Mídia'}
+                  {isSubmitting ? 'Enviando...' : 'Enviar con medios'}
                 </Button>
               </Grid>
             </Grid>

@@ -671,7 +671,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
   };
 
   const handleSaveSchedules = async (values) => {
-    toast.success("Clique em salvar para registar as alterações");
+    toast.success("Haz clic en guardar para registrar los cambios");
     setSchedules(values);
   };
 
@@ -783,7 +783,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                           <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                             <Typography className={classes.sectionTitle}>
                               <ImageIcon className={classes.sectionIcon} />
-                              Mídia de Saudação
+                              Medios de salud
                             </Typography>
                             
                             {attachmentName && (
@@ -822,7 +822,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                           <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                             <Typography className={classes.sectionTitle}>
                               <SettingsIcon className={classes.sectionIcon} />
-                              Configurações Básicas
+                              Configuraciones básicas
                             </Typography>
                             
                             <div className={classes.fieldRow}>
@@ -895,7 +895,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                           <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                             <Typography className={classes.sectionTitle}>
                               <SecurityIcon className={classes.sectionIcon} />
-                              Token de Autenticação
+                              Token de Autenticación
                             </Typography>
                             
                             <Box display="flex" alignItems="center" gap={1}>
@@ -1040,7 +1040,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                           <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                             <Typography className={classes.sectionTitle}>
                               <InfoIcon className={classes.sectionIcon} />
-                              Filas e Prompts
+                              Colas e Prompts
                             </Typography>
                             
                             <Box className={classes.queueSelectWrapper}>
@@ -1161,7 +1161,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <LinkIcon className={classes.sectionIcon} />
-                          Configurações de Integração
+                          Configuración de integración
                         </Typography>
                         
                         <FormControl
@@ -1201,7 +1201,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <MessageIcon className={classes.sectionIcon} />
-                          Mensagens Automáticas
+                          Mensajes automáticos
                         </Typography>
                         
                         <div className={classes.fieldRow}>
@@ -1263,7 +1263,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <PersonIcon className={classes.sectionIcon} />
-                          Configurações do Chatbot
+                          Configuración del Chatbot
                         </Typography>
                         
                         <Grid container spacing={2}>
@@ -1404,7 +1404,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <BarChartIcon className={classes.sectionIcon} />
-                          Sistema de Avaliação (NPS)
+                          Sistema de evaluación (NPS)
                         </Typography>
                         
                         <div className={classes.fieldRow}>
@@ -1462,7 +1462,7 @@ const WhatsAppModal = ({ open, onClose, whatsAppId }) => {
                         <CardContent>
                           <Typography className={classes.sectionTitle}>
                             <ScheduleIcon className={classes.sectionIcon} />
-                            Horários de Funcionamento
+                            Horario de apertura
                           </Typography>
                           
                           <SchedulesForm

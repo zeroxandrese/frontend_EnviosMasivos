@@ -611,7 +611,7 @@ const Queues = () => {
             
             <div className={classes.filtersGroup}>
               <TextField
-                placeholder="Buscar por nome, saudação ou ordem..."
+                placeholder="Buscar por nombre, saludo o pedido...."
                 type="search"
                 value={searchParam}
                 onChange={handleSearch}

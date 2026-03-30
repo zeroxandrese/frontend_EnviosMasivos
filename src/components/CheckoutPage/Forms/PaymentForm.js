@@ -104,9 +104,9 @@ export default function Pricing(props) {
         planId: planList.id,
         price: planList.amount,
         description: [
-          `${planList.users} Usuários`,
-          `${planList.connections} Conexão`,
-          `${planList.queues} Filas`
+          `${planList.users} Usuarios`,
+          `${planList.connections} Conexión`,
+          `${planList.queues} Colas`
         ],
         users: planList.users,
         connections: planList.connections,
@@ -207,7 +207,7 @@ export default function Pricing(props) {
                             <IconButton aria-label="delete" className={classes.margin} size="small">
                               <MinimizeIcon fontSize="inherit" onClick={e => handleChangeMin(e, usersPlans - 1)} />
                             </IconButton>
-                            {usersPlans} Usuários
+                            {usersPlans} Usuarios
 
                             <IconButton aria-label="delete" className={classes.margin} size="small">
                               <AddIcon fontSize="inherit" onClick={e => handleChangeAdd(e, usersPlans + 1)} />
@@ -221,7 +221,7 @@ export default function Pricing(props) {
                             <IconButton aria-label="delete" className={classes.margin} size="small">
                               <MinimizeIcon fontSize="inherit" onClick={(e) => handleChangeConnectionsMin(e, connectionsPlans - 1)} />
                             </IconButton>
-                            {connectionsPlans} Conexão
+                            {connectionsPlans} Conexión
 
                             <IconButton aria-label="delete" className={classes.margin} size="small">
                               <AddIcon fontSize="inherit" onClick={(e) => handleChangeConnectionsAdd(e, connectionsPlans + 1)} />

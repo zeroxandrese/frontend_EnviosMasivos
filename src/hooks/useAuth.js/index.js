@@ -155,8 +155,8 @@ const useAuth = () => {
         // localStorage.setItem("companyId", companyId);
         api.defaults.headers.Authorization = `Bearer ${data.token}`;
         setIsAuth(true);
-        toastError(`Opss! Sua assinatura venceu ${vencimento}.
-Entre em contato com o Suporte para mais informações! `);
+        toastError(`Opss! Tu suscripción ha caducado ${vencimento}.
+Póngase en contacto con el servicio de asistencia para obtener más información! `);
         history.push("/financeiro-aberto");
         setLoading(false);
       }

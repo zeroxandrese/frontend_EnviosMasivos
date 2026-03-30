@@ -398,7 +398,7 @@ export function PlanManagerForm(props) {
                             >
                                 <Typography className={classes.accordionTitle}>
                                     <Settings />
-                                    Informações Básicas
+                                    Información básica
                                 </Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -502,7 +502,7 @@ export function PlanManagerForm(props) {
                             >
                                 <Typography className={classes.accordionTitle}>
                                     <Chat />
-                                    Recursos de Comunicação
+                                    Recursos de comunicación
                                 </Typography>
                             </AccordionSummary>
                             <AccordionDetails>
@@ -670,11 +670,11 @@ export function PlanManagerForm(props) {
                                     </Grid>
                                     <Grid xs={12} sm={6} md={4} item>
                                         <FormControl margin="dense" variant="outlined" fullWidth className={classes.formField}>
-                                            <InputLabel htmlFor="useIntegration-selection">Integrações</InputLabel>
+                                            <InputLabel htmlFor="useIntegration-selection">Integraciones</InputLabel>
                                             <Field
                                                 as={Select}
                                                 id="useIntegration-selection"
-                                                label="Integrações"
+                                                label="Integraciones"
                                                 labelId="useIntegration-selection-label"
                                                 name="useIntegration"
                                                 margin="dense"
@@ -748,14 +748,14 @@ export function PlansManagerGrid(props) {
     const renderFeature = (value) => {
         return value === true ? (
             <Chip 
-                label="Sim"
+                label="Si"
                 className={classes.enabledChip}
                 size="small"
                 icon={<CheckCircle fontSize="small" />}
             />
         ) : (
             <Chip 
-                label="Não"
+                label="No"
                 className={classes.disabledChip}
                 size="small"
                 icon={<Cancel fontSize="small" />}
@@ -789,8 +789,8 @@ export function PlansManagerGrid(props) {
                                     {i18n.t("plans.form.users")}
                                 </Box>
                             </TableCell>
-                            <TableCell align="center">Conexões</TableCell>
-                            <TableCell align="center">Filas</TableCell>
+                            <TableCell align="center">Conexiones</TableCell>
+                            <TableCell align="center">Colas</TableCell>
                             <TableCell align="center">
                                 <Box display="flex" alignItems="center" justifyContent="center">
                                     <MonetizationOn style={{ marginRight: 4, color: "#64748b", fontSize: "16px" }} />
@@ -800,7 +800,7 @@ export function PlansManagerGrid(props) {
                             <TableCell align="center">WhatsApp</TableCell>
                             <TableCell align="center">Facebook</TableCell>
                             <TableCell align="center">Instagram</TableCell>
-                            <TableCell align="center">Campanhas</TableCell>
+                            <TableCell align="center">Campañas</TableCell>
                             <TableCell align="center">
                                 <Box display="flex" alignItems="center" justifyContent="center">
                                     <Schedule style={{ marginRight: 4, color: "#64748b", fontSize: "16px" }} />
@@ -924,7 +924,7 @@ export default function PlansManager() {
             const planList = await list()
             setRecords(planList)
         } catch (e) {
-            toast.error('Não foi possível carregar a lista de registros')
+            toast.error('No se pudo cargar la lista de registros.')
         }
         setLoading(false)
     }
@@ -939,9 +939,9 @@ export default function PlansManager() {
             }
             await loadPlans()
             handleCancel()
-            toast.success('Operação realizada com sucesso!')
+            toast.success('Operación realizada con éxito!')
         } catch (e) {
-            toast.error('Não foi possível realizar a operação. Verifique se já existe uma plano com o mesmo nome ou se os campos foram preenchidos corretamente')
+            toast.error('No se pudo completar la operación. Por favor, compruebe si ya existe un plan con el mismo nombre o si los campos se han rellenado correctamente.')
         }
         setLoading(false)
     }
@@ -952,9 +952,9 @@ export default function PlansManager() {
             await remove(record.id)
             await loadPlans()
             handleCancel()
-            toast.success('Operação realizada com sucesso!')
+            toast.success('Operación realizada con éxito!')
         } catch (e) {
-            toast.error('Não foi possível realizar a operação')
+            toast.error('La operación no pudo completarse.')
         }
         setLoading(false)
     }
@@ -1047,10 +1047,10 @@ export default function PlansManager() {
                         <Assignment className={classes.headerIcon} />
                         <div>
                             <Typography className={classes.headerTitle}>
-                                Gerenciamento de Planos
+                                Gestión de planes
                             </Typography>
                             <Typography className={classes.headerSubtitle}>
-                                Configure planos, recursos e preços
+                                Configura planes, funciones y precios.
                             </Typography>
                         </div>
                     </div>
@@ -1059,11 +1059,11 @@ export default function PlansManager() {
                 {/* Busca */}
                 <Paper className={classes.filtersSection} elevation={0}>
                     <Typography className={classes.filtersTitle}>
-                        <FilterList style={{ marginRight: 12 }} />
-                        Buscar Planos
+                        <FilterList style={{ marginRight: 12 }} />         
+                        Buscar planes
                     </Typography>
                     <TextField
-                        placeholder="Buscar por nome do plano..."
+                        placeholder="Buscar por nombre del plan..."
                         type="search"
                         value={searchParam}
                         onChange={handleSearch}
@@ -1089,7 +1089,7 @@ export default function PlansManager() {
                             </div>
                             <div className={classes.statContent}>
                                 <Typography className={classes.statTitle}>
-                                    Total Planos
+                                    Planes totales
                                 </Typography>
                                 <Typography className={classes.statValue}>
                                     {stats.total}
@@ -1103,7 +1103,7 @@ export default function PlansManager() {
                             </div>
                             <div className={classes.statContent}>
                                 <Typography className={classes.statTitle}>
-                                    Planos Públicos
+                                    Planes Públicos
                                 </Typography>
                                 <Typography className={classes.statValue}>
                                     {stats.publicPlans}
@@ -1117,7 +1117,7 @@ export default function PlansManager() {
                             </div>
                             <div className={classes.statContent}>
                                 <Typography className={classes.statTitle}>
-                                    Planos Privados
+                                    Planes Privados
                                 </Typography>
                                 <Typography className={classes.statValue}>
                                     {stats.privatePlans}
@@ -1131,10 +1131,10 @@ export default function PlansManager() {
                             </div>
                             <div className={classes.statContent}>
                                 <Typography className={classes.statTitle}>
-                                    Preço Médio
+                                    Precio medio
                                 </Typography>
                                 <Typography className={classes.statValue}>
-                                    R$ {stats.avgPrice}
+                                    $ {stats.avgPrice}
                                 </Typography>
                             </div>
                         </div>
@@ -1158,12 +1158,12 @@ export default function PlansManager() {
 
                 {/* Modal de Confirmação */}
                 <ConfirmationModal
-                    title="Exclusão de Registro"
+                    title="Eliminación de registro"
                     open={showConfirmDialog}
                     onClose={() => setShowConfirmDialog(false)}
                     onConfirm={() => handleDelete()}
                 >
-                    Deseja realmente excluir esse registro?
+                    ¿De verdad quieres eliminar este registro?
                 </ConfirmationModal>
             </Container>
         </div>

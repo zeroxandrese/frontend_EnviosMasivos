@@ -84,7 +84,7 @@ export default function CheckoutPage(props) {
       setDatePayment(data)
       actions.setSubmitting(false);
       setActiveStep(activeStep + 1);
-      toast.success("Assinatura realizada com sucesso!, aguardando a realização do pagamento");
+      toast.success("Suscripción completada con éxito! Pendiente de pago");
     } catch (err) {
       toastError(err);
     }

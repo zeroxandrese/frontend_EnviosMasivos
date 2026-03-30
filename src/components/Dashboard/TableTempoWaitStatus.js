@@ -147,7 +147,7 @@ export default function TableMediaStatus(props) {
         labels: ['Ótimo', 'Bom', 'Ruim'],
         datasets: [
             {
-                label: 'Avaliação do Atendimento',
+                label: 'Evaluación del servicio',
                 // data: [dougsData?.boa, dougsData?.media, dougsData?.ruim], //Carregando os dados
                 data: dougsData ? [dougsData.boa, dougsData.media, dougsData.ruim] : [0, 0, 0],
                 backgroundColor: ['#1A4783', '#FF6737', '#FF0505',],

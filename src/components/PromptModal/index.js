@@ -437,7 +437,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <PersonIcon className={classes.sectionIcon} />
-                          Informações Básicas
+                          Información básica
                         </Typography>
                         
                         <div className={classes.fieldRow}>
@@ -485,7 +485,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <VolumeUpIcon className={classes.sectionIcon} />
-                          Configurações de Voz
+                          Configuración de voz
                         </Typography>
                         
                         <div className={classes.fieldRow}>
@@ -591,7 +591,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <WorkIcon className={classes.sectionIcon} />
-                          Fila de Atendimento
+                          Cola de servicio
                         </Typography>
                         
                         <Box className={classes.queueSelectWrapper}>
@@ -610,7 +610,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <MessageIcon className={classes.sectionIcon} />
-                          Configuração do Prompt
+                          Configuración de Prompt
                         </Typography>
                         
                         <div className={classes.fieldRow}>
@@ -636,7 +636,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <SettingsIcon className={classes.sectionIcon} />
-                          Parâmetros Avançados
+                          Parámetros avanzados
                         </Typography>
                         
                         <div className={classes.fieldRow}>

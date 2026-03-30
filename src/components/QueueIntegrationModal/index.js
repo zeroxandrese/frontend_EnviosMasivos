@@ -442,7 +442,7 @@ const QueueIntegration = ({ open, onClose, integrationId }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <SettingsIcon className={classes.sectionIcon} />
-                          Configuração Básica
+                          Configuración básica
                         </Typography>
                         
                         <div className={classes.fieldRow}>
@@ -494,7 +494,7 @@ const QueueIntegration = ({ open, onClose, integrationId }) => {
                         <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                           <Typography className={classes.sectionTitle}>
                             <LanguageIcon className={classes.sectionIcon} />
-                            Configurações DialogFlow
+                            Configuración de DialogFlow
                           </Typography>
                           
                           <div className={classes.fieldRow}>
@@ -545,7 +545,7 @@ const QueueIntegration = ({ open, onClose, integrationId }) => {
                         <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                           <Typography className={classes.sectionTitle}>
                             <WebIcon className={classes.sectionIcon} />
-                            Configurações {values.type.toUpperCase()}
+                            Configuraciones {values.type.toUpperCase()}
                           </Typography>
                           
                           <div className={classes.fieldRow}>
@@ -604,7 +604,7 @@ const QueueIntegration = ({ open, onClose, integrationId }) => {
                         <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                           <Typography className={classes.sectionTitle}>
                             <AndroidIcon className={classes.sectionIcon} />
-                            Configurações Typebot
+                            Configuración de Typebot
                           </Typography>
                           
                           <div className={classes.fieldRow}>

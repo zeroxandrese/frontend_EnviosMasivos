@@ -534,7 +534,7 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <SettingsIcon className={classes.sectionIcon} />
-                          Tipo de Mensagem
+                          Tipo de mensaje
                         </Typography>
                         
                         <div className={classes.fieldRow}>
@@ -556,7 +556,7 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                               required
                             >
                               <MenuItem value={true}>Menu</MenuItem>
-                              <MenuItem value={false}>Resposta</MenuItem>
+                              <MenuItem value={false}>Respuesta</MenuItem>
                             </Field>
                           </FormControl>
                         </div>
@@ -568,7 +568,7 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <CategoryIcon className={classes.sectionIcon} />
-                          Informações Básicas
+                          Información básica
                         </Typography>
                         
                         <div className={classes.fieldRow}>
@@ -600,7 +600,7 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                         <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                           <Typography className={classes.sectionTitle}>
                             <SecurityIcon className={classes.sectionIcon} />
-                            Configurações Avançadas
+                            Configuración avanzada
                           </Typography>
                           
                           <div className={classes.fieldRow}>
@@ -643,7 +643,7 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                           <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                             <Typography className={classes.sectionTitle}>
                               <MessageIcon className={classes.sectionIcon} />
-                              Conteúdo da Mensagem
+                              Contenido del mensaje
                             </Typography>
                             
                             <div className={classes.fieldRow}>
@@ -666,7 +666,7 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                             {/* Variáveis de Mensagem */}
                             <Box className={classes.variablesSection}>
                               <Typography style={{ fontSize: "14px", fontWeight: 600, color: "#059669", marginBottom: 8 }}>
-                                Variáveis Disponíveis
+                                Variables disponibles
                               </Typography>
                               <MessageVariablesPicker
                                 disabled={isSubmitting}
@@ -681,7 +681,7 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                           <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                             <Typography className={classes.sectionTitle}>
                               <AttachmentIcon className={classes.sectionIcon} />
-                              Anexos
+                              Adjuntos
                             </Typography>
                             
                             {(quickemessage.mediaPath || attachment) ? (

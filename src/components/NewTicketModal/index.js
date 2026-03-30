@@ -355,7 +355,7 @@ const NewTicketModal = ({ modalOpen, onClose, initialContact }) => {
                 }}
                 renderValue={() => {
                   if (selectedWhatsapp === "") {
-                    return "Selecione uma Conexão"
+                    return "Selecione uma Conexión"
                   }
                   const whatsapp = whatsapps.find(w => w.id === selectedWhatsapp)
                   return whatsapp.name

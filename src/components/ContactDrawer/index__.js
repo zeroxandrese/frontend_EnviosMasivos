@@ -185,8 +185,8 @@ const ContactDrawer = ({ open, handleDrawerClose, contact, whatsapp, ticketId, l
         					onClose={setBlockModalOpen}
        						onConfirm={handleBlockContact}
       					>
-							{(!checkBlockedList()) && <>Você realmente deseja bloquear esse contato? Você não receberá mais nenhuma mensagem dele.</>}
-							{checkBlockedList() && <>Você realmente deseja desbloquear esse contato? Você poderá começar a receber mensagem dele.</>}
+							{(!checkBlockedList()) && <>¿De verdad quieres bloquear a este contacto? Ya no recibirás más mensajes suyos.</>}
+							{checkBlockedList() && <>¿De verdad quieres desbloquear a este contacto? Si lo haces, podrías empezar a recibir mensajes suyos.</>}
       					</ConfirmationModal>
 						<ContactModal
 							open={modalOpen}
@@ -259,7 +259,7 @@ const ContactDrawer = ({ open, handleDrawerClose, contact, whatsapp, ticketId, l
 									variant="outlined"
 									onClick={() => setNewTicketModalOpen(true)}
 								>
-									Continuar conversa com outro número
+									Continúa la conversación con otro número.
 								</Button>
 							}
 						</Paper>

@@ -313,7 +313,7 @@ export const Plantao = () => {
     try {
       const { data } = await api.delete(`/plantao/${plantaoId}`);
       handleGetPlantao();
-      toast.success('Plantão removido com sucesso');
+      toast.success('El cambio se eliminó correctamente');
     } catch (error) {
       console.log('delete plantao', error);
     }
@@ -362,10 +362,10 @@ export const Plantao = () => {
               <ScheduleIcon className={classes.headerIcon} />
               <div>
                 <Typography className={classes.headerTitle}>
-                  Plantão
+                  Deber
                 </Typography>
                 <Typography className={classes.headerSubtitle}>
-                  Gerencie plantonistas e seus horários de atendimento
+                  Gestionar al personal de guardia y sus horarios de servicio.
                 </Typography>
               </div>
             </div>
@@ -375,7 +375,7 @@ export const Plantao = () => {
           <Paper className={classes.filtersSection} elevation={0}>
             <Typography className={classes.filtersTitle}>
               <FilterListIcon style={{ marginRight: 12 }} />
-              Gerenciar Plantões
+              Administrar turnos
             </Typography>
             
             <div className={classes.filtersGroup}>
@@ -387,7 +387,7 @@ export const Plantao = () => {
                 onClick={() => setOpenModal(true)}
                 startIcon={<AddIcon />}
               >
-                Adicionar Plantão
+                Agregar deber
               </Button>
             </div>
           </Paper>
@@ -401,7 +401,7 @@ export const Plantao = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Total de Plantonistas
+                    Número total de personal de guardia
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.total}
@@ -415,7 +415,7 @@ export const Plantao = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Com Horários Definidos
+                    Con Horários Definidos
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.withSchedules}
@@ -429,7 +429,7 @@ export const Plantao = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Com Telefone Cadastrado
+                    Con número de teléfono registrado
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.withPhones}
@@ -443,10 +443,10 @@ export const Plantao = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Status Geral
+                    Status General
                   </Typography>
                   <Typography className={classes.statValue}>
-                    Ativo
+                    Activo
                   </Typography>
                 </div>
               </div>
@@ -468,13 +468,13 @@ export const Plantao = () => {
                     <TableCell align="center">
                       <Box display="flex" alignItems="center" justifyContent="center">
                         <PersonIcon style={{ marginRight: 8, color: "#64748b" }} />
-                        Plantonista
+                        Servicio
                       </Box>
                     </TableCell>
                     <TableCell align="center">
                       <Box display="flex" alignItems="center" justifyContent="center">
                         <PhoneIcon style={{ marginRight: 8, color: "#64748b" }} />
-                        Telefone
+                        Telefono
                       </Box>
                     </TableCell>
                     <TableCell align="center">
@@ -484,7 +484,7 @@ export const Plantao = () => {
                       </Box>
                     </TableCell>
                     <TableCell align="center">
-                      Ações
+                      Comportamiento
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -525,7 +525,7 @@ export const Plantao = () => {
                             })}
                             {(!users?.days || users?.days?.filter(d => d.startTime && d.endTime).length === 0) && (
                               <Typography variant="body2" color="textSecondary" style={{ fontStyle: 'italic' }}>
-                                Sem horários definidos
+                                Sin horarios establecidos
                               </Typography>
                             )}
                           </Box>
@@ -561,10 +561,10 @@ export const Plantao = () => {
                         <Box className={classes.emptyState}>
                           <ScheduleIcon className={classes.emptyStateIcon} />
                           <Typography variant="h6" style={{ marginBottom: 8 }}>
-                            Nenhum plantonista encontrado
+                            No se encontró personal de guardia.
                           </Typography>
                           <Typography variant="body2">
-                            Adicione o primeiro plantonista para começar
+                            Para empezar, añade al primer trabajador de guardia.
                           </Typography>
                         </Box>
                       </TableCell>

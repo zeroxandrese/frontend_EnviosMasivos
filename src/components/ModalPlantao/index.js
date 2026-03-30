@@ -334,9 +334,9 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  userId: Yup.string().required('Informe o usuário'),
-  phone: Yup.string().required('Informe o telefone'),
-  interval: Yup.number().required('Informe o intervalo entre notificações'),
+  userId: Yup.string().required('Informar al usuario'),
+  phone: Yup.string().required('Introduzca el número de teléfono'),
+  interval: Yup.number().required('Especifique el intervalo entre las notificaciones'),
 
   days: Yup.array()
     .of(
@@ -440,7 +440,7 @@ export const ModalPlantao = ({ open, onClose, plantaoId, callback }) => {
         <DialogTitle className={classes.dialogTitle} disableTypography>
           <Typography className={classes.titleText}>
             <ScheduleIcon className={classes.titleIcon} />
-            {plantaoId ? "Editar plantonista" : "Adicionar plantonista"}
+            {plantaoId ? "Editar de turno" : "Agregar asistente de guardia"}
           </Typography>
         </DialogTitle>
         
@@ -471,7 +471,7 @@ export const ModalPlantao = ({ open, onClose, plantaoId, callback }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <PersonIcon className={classes.sectionIcon} />
-                          Informações do Plantonista
+                          Información del personal de guardia
                         </Typography>
                         
                         <div className={classes.fieldRow}>
@@ -509,7 +509,7 @@ export const ModalPlantao = ({ open, onClose, plantaoId, callback }) => {
                             className={classes.textField}
                             onChange={(e) => setFieldValue('interval', e.target.value)}
                             error={touched.interval && Boolean(errors.interval)}
-                            helperText={touched.interval ? errors.interval : 'Intervalo entre notificações (minutos)'}
+                            helperText={touched.interval ? errors.interval : 'Intervalo entre notificaciones (minutos)'}
                             InputProps={{
                               startAdornment: <NotificationsIcon style={{ marginRight: 8, color: '#64748b' }} fontSize="small" />
                             }}
@@ -528,7 +528,7 @@ export const ModalPlantao = ({ open, onClose, plantaoId, callback }) => {
                       <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                         <Typography className={classes.sectionTitle}>
                           <CalendarTodayIcon className={classes.sectionIcon} />
-                          Horários da Semana
+                          Horario semanal
                         </Typography>
                         
                         {values.days.map((item, index) => {
@@ -564,7 +564,7 @@ export const ModalPlantao = ({ open, onClose, plantaoId, callback }) => {
                                 <FastField name={`days[${index}].endTime`}>
                                   {({ field }) => (
                                     <NumberFormat
-                                      label="Fim"
+                                      label="Fin"
                                       {...field}
                                       variant="outlined"
                                       size="small"
@@ -662,10 +662,10 @@ export const UsersContainer = (props) => {
       fullWidth
       className={classes.formControl}
     >
-      <InputLabel>Usuário</InputLabel>
+      <InputLabel>Usuario</InputLabel>
       <Select
         value={value}
-        label="Usuário"
+        label="Usuario"
         onChange={handleChange}
         MenuProps={MenuProps}
       >

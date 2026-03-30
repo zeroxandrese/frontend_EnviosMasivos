@@ -423,7 +423,7 @@ const Quickemessages = () => {
                 {i18n.t("quickMessages.title")}
               </Typography>
               <Typography className={classes.headerSubtitle}>
-                Gerencie suas mensagens rápidas e menus de atendimento
+                Gestiona tus mensajes rápidos y menús de atención al cliente.
               </Typography>
             </div>
           </div>
@@ -434,7 +434,7 @@ const Quickemessages = () => {
           <div className={classes.controlsHeader}>
             <Typography className={classes.controlsTitle}>
               <SearchIcon style={{ marginRight: 12 }} />
-              Buscar e Gerenciar
+              Buscar y Gerenciar
             </Typography>
             
             <Button
@@ -492,7 +492,7 @@ const Quickemessages = () => {
                     <TableCell align="center">
                       <Box display="flex" alignItems="center" justifyContent="center">
                         <MessageIcon style={{ marginRight: 8, color: "#64748b" }} />
-                        Tipo de Mensagem
+                        Tipo de mensaje
                       </Box>
                     </TableCell>
                     <TableCell align="center">
@@ -555,7 +555,7 @@ const Quickemessages = () => {
                             <Box display="flex" alignItems="center" justifyContent="center">
                               <PersonIcon style={{ marginRight: 8, color: "#64748b" }} />
                               <Typography variant="body2" style={{ color: "#64748b", fontWeight: 500 }}>
-                                Pessoal
+                                Tipo
                               </Typography>
                             </Box>
                           )}
@@ -597,10 +597,10 @@ const Quickemessages = () => {
                           <Box display="flex" flexDirection="column" alignItems="center">
                             <MessageIcon style={{ fontSize: "64px", color: "#cbd5e1", marginBottom: "16px" }} />
                             <Typography color="textSecondary" variant="h6" style={{ marginBottom: "8px" }}>
-                              Nenhuma mensagem rápida encontrada
+                              No se encontraron mensajes rápidos
                             </Typography>
                             <Typography color="textSecondary" variant="body2">
-                              Use a busca ou crie sua primeira mensagem rápida
+                              Utilice la función de búsqueda o cree su primer mensaje rápido.
                             </Typography>
                           </Box>
                         </TableCell>

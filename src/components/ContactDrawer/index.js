@@ -142,7 +142,7 @@ const ContactDrawer = ({ open, handleDrawerClose, contact, ticket, loading }) =>
 	const handleBlockContact = async (contactId) => {
 		try {
 			await api.put(`/contacts/block/${contactId}`, { active: false });
-			toast.success("Contato bloqueado");
+			toast.success("Contacto bloqueado");
 		} catch (err) {
 			toastError(err);
 		}
@@ -153,7 +153,7 @@ const ContactDrawer = ({ open, handleDrawerClose, contact, ticket, loading }) =>
 	const handleUnBlockContact = async (contactId) => {
 		try {
 			await api.put(`/contacts/block/${contactId}`, { active: true });
-			toast.success("Contato desbloqueado");
+			toast.success("Contacto desbloqueado");
 		} catch (err) {
 			toastError(err);
 		}

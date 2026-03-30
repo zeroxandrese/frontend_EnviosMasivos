@@ -233,7 +233,7 @@ const ContactMedia = ({ ticket }) => {
           />
           <Tab
             className={classes.tabs}
-            label={"Ligações"}
+            label={"Conexiones"}
             value={"calls"}
           />
         </Tabs>
@@ -330,7 +330,7 @@ const ContactMedia = ({ ticket }) => {
                   <Stack spacing={1} key={call.id} direction={'row'} p={2} sx={{ border: '1px solid #ccc' }}>
 
                     {isAccepted ? <MdLocalPhone color="green" size={20} /> : <MdPhoneMissed color="red" size={20} />}
-                    <Typography variant="caption"> {isAccepted ? 'Chamada recebida em ' : 'Chamada perdida em '}{format(new Date(call?.createdAt), 'dd/MM/yyyy hh:mm:ss')}</Typography>
+                    <Typography variant="caption"> {isAccepted ? 'Llamada recibida en ' : 'llamada perdida '}{format(new Date(call?.createdAt), 'dd/MM/yyyy hh:mm:ss')}</Typography>
 
                   </Stack>
                 )

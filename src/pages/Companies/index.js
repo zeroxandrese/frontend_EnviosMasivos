@@ -497,7 +497,7 @@ const Companies = () => {
                                     />
                                 </Typography>
                                 <Typography className={classes.headerSubtitle}>
-                                    Gerencie empresas, planos e assinaturas do sistema
+                                    Gestiona empresas, planes y suscripciones al sistema.
                                 </Typography>
                             </div>
                         </div>
@@ -534,7 +534,7 @@ const Companies = () => {
                                 </div>
                                 <div className={classes.statContent}>
                                     <Typography className={classes.statTitle}>
-                                        Empresas Ativas
+                                        Empresas Activas
                                     </Typography>
                                     <Typography className={classes.statValue}>
                                         {stats.active}
@@ -548,7 +548,7 @@ const Companies = () => {
                                 </div>
                                 <div className={classes.statContent}>
                                     <Typography className={classes.statTitle}>
-                                        Planos Ativos
+                                        Planos Activos
                                     </Typography>
                                     <Typography className={classes.statValue}>
                                         {stats.plans}
@@ -562,7 +562,7 @@ const Companies = () => {
                                 </div>
                                 <div className={classes.statContent}>
                                     <Typography className={classes.statTitle}>
-                                        Receita Total (R$)
+                                        Ingresos totales ($)
                                     </Typography>
                                     <Typography className={classes.statValue}>
                                         {stats.totalRevenue.toLocaleString('pt-br', { minimumFractionDigits: 2 })}
@@ -672,7 +672,7 @@ const Companies = () => {
                                                     </TableCell>
                                                     <TableCell align="center">
                                                         <Typography className={classes.priceText}>
-                                                            R$ {renderPlanValue(company)}
+                                                            $ {renderPlanValue(company)}
                                                         </Typography>
                                                     </TableCell>
                                                     <TableCell align="center">
@@ -704,10 +704,10 @@ const Companies = () => {
                                                     <Box className={classes.emptyState}>
                                                         <BusinessIcon className={classes.emptyStateIcon} />
                                                         <Typography variant="h6" style={{ marginBottom: 8 }}>
-                                                            Nenhuma empresa encontrada
+                                                            No se encontraron empresas
                                                         </Typography>
                                                         <Typography variant="body2">
-                                                            As empresas cadastradas aparecerão aqui
+                                                            Aquí aparecerán las empresas registradas.
                                                         </Typography>
                                                     </Box>
                                                 </TableCell>

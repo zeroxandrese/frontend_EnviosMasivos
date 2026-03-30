@@ -156,13 +156,13 @@ const Invoices = () => {
     }
   }
   
-  const renderUseWhatsapp = (row) => { return row.status === false ? "Não" : "Sim" };
-  const renderUseFacebook = (row) => { return row.status === false ? "Não" : "Sim" };
-  const renderUseInstagram = (row) => { return row.status === false ? "Não" : "Sim" };
-  const renderUseCampaigns = (row) => { return row.status === false ? "Não" : "Sim" };
-  const renderUseSchedules = (row) => { return row.status === false ? "Não" : "Sim" };
-  const renderUseInternalChat = (row) => { return row.status === false ? "Não" : "Sim" };
-  const renderUseExternalApi = (row) => { return row.status === false ? "Não" : "Sim" };
+  const renderUseWhatsapp = (row) => { return row.status === false ? "No" : "Si" };
+  const renderUseFacebook = (row) => { return row.status === false ? "No" : "Si" };
+  const renderUseInstagram = (row) => { return row.status === false ? "No" : "Si" };
+  const renderUseCampaigns = (row) => { return row.status === false ? "No" : "Si" };
+  const renderUseSchedules = (row) => { return row.status === false ? "No" : "Si" };
+  const renderUseInternalChat = (row) => { return row.status === false ? "No" : "Si" };
+  const renderUseExternalApi = (row) => { return row.status === false ? "No" : "Si" };
 
   return (
     <MainContainer>
@@ -186,11 +186,11 @@ const Invoices = () => {
           <TableHead>
             <TableRow>
               {/* <TableCell align="center">Id</TableCell> */}
-              <TableCell align="center">Detalhes</TableCell>
+              <TableCell align="center">Detalles</TableCell>
 
-              <TableCell align="center">Usuários</TableCell>
-              <TableCell align="center">Conexões</TableCell>
-              <TableCell align="center">Filas</TableCell>
+              <TableCell align="center">Usuarios</TableCell>
+              <TableCell align="center">Conexiones</TableCell>
+              <TableCell align="center">Colas</TableCell>
               {/* <TableCell align="center">Whatsapp</TableCell>
               <TableCell align="center">Facebook</TableCell>
               <TableCell align="center">Instagram</TableCell> */}
@@ -202,7 +202,7 @@ const Invoices = () => {
               <TableCell align="center">Valor</TableCell>
               <TableCell align="center">Data Venc.</TableCell>
               <TableCell align="center">Status</TableCell>
-              <TableCell align="center">Ação</TableCell>
+              <TableCell align="center">Acción</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

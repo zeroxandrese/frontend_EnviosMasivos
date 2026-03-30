@@ -431,7 +431,7 @@ const Campaigns = () => {
       const companyId = user.companyId;
       const planConfigs = await getPlanCompany(undefined, companyId);
       if (!planConfigs.plan.useCampaigns) {
-        toast.error("Esta empresa não possui permissão para acessar essa página! Estamos lhe redirecionando.");
+        toast.error("Esta empresa no tiene permiso para acceder a esta página! Le estamos redirigiendo.");
         setTimeout(() => {          
           history.push(`/`)
         }, 1000);
@@ -830,7 +830,7 @@ const Campaigns = () => {
                       <Typography className={classes.contactListName}>
                         {campaign.contactListId
                           ? campaign.contactList.name
-                          : "Não definida"}
+                          : "No definida"}
                       </Typography>
                     </TableCell>
                     <TableCell align="center">
@@ -838,21 +838,21 @@ const Campaigns = () => {
                         <WhatsAppIcon style={{ fontSize: 16 }} />
                         {campaign.whatsappId
                           ? campaign.whatsapp.name
-                          : "Não definido"}
+                          : "No definido"}
                       </Typography>
                     </TableCell>
                     <TableCell align="center">
                       <Typography className={classes.scheduleDate}>
                         {campaign.scheduledAt
                           ? datetimeToClient(campaign.scheduledAt)
-                          : "Sem agendamento"}
+                          : "Sin agendamento"}
                       </Typography>
                     </TableCell>
                     <TableCell align="center">
                       <Typography className={classes.scheduleDate}>
                         {campaign.completedAt
                           ? datetimeToClient(campaign.completedAt)
-                          : "Não concluída"}
+                          : "No concluída"}
                       </Typography>
                     </TableCell>
                     <TableCell align="center">

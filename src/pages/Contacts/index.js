@@ -700,10 +700,10 @@ const Contacts = () => {
                         <ContactsIcon className={classes.headerIcon} />
                         <div>
                             <Typography className={classes.headerTitle}>
-                                Gerenciar Contatos
+                                Gerenciar Contactos
                             </Typography>
                             <Typography className={classes.headerSubtitle}>
-                                Visualize, edite e gerencie todos os seus contatos
+                                Visualiza, edita y gestiona todos tus contactos.
                             </Typography>
                         </div>
                     </div>
@@ -713,7 +713,7 @@ const Contacts = () => {
                 <Paper className={classes.filtersSection} elevation={0}>
                     <Typography className={classes.filtersTitle}>
                         <FilterListIcon style={{ marginRight: 12 }} />
-                        Filtros e Ações
+                        Filtros y acciones
                     </Typography>
                     
                     <div className={classes.filtersGroup}>
@@ -802,7 +802,7 @@ const Contacts = () => {
                 <Box className={classes.statsContainer}>
                     <Typography className={classes.statsText}>
                         <ContactsIcon />
-                        Total de Contatos: 
+                        Total de Contactos: 
                         <span className={classes.contactCount}>{contacts.length}</span>
                     </Typography>
                 </Box>

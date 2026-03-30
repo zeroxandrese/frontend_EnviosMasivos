@@ -131,7 +131,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
             onChange={(event) => handleOptionChangeTitle(event, index)}
             size="small"
             className={classes.input}
-            placeholder="Título da opção"
+            placeholder="Título de la opción"
           />
           {option.edition && (
             <>
@@ -161,7 +161,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
     return (
       <>
         <Typography>
-          {option.title !== "" ? option.title : "Título não definido"}
+          {option.title !== "" ? option.title : "Título no definido"}
           <IconButton
             variant="outlined"
             size="small"

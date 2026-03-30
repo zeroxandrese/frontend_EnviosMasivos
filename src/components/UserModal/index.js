@@ -601,7 +601,7 @@ const UserModal = ({ open, onClose, userId }) => {
 											<CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
 												<Typography className={classes.sectionTitle}>
 													<PersonIcon className={classes.sectionIcon} />
-													Informações Básicas
+													Información básica
 												</Typography>
 												
 												<div className={classes.fieldRow}>
@@ -694,7 +694,7 @@ const UserModal = ({ open, onClose, userId }) => {
 											<CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
 												<Typography className={classes.sectionTitle}>
 													<ScheduleIcon className={classes.sectionIcon} />
-													Horário de Trabalho
+													Horas de trabajo
 												</Typography>
 												
 												<Can
@@ -756,7 +756,7 @@ const UserModal = ({ open, onClose, userId }) => {
 											<CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
 												<Typography className={classes.sectionTitle}>
 													<QueueMusicIcon className={classes.sectionIcon} />
-													Filas e Integrações
+													Colas e integraciones
 												</Typography>
 												
 												<Can
@@ -825,7 +825,7 @@ const UserModal = ({ open, onClose, userId }) => {
 											<CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
 												<Typography className={classes.sectionTitle}>
 													<SecurityIcon className={classes.sectionIcon} />
-													Permissões
+													Permisos
 												</Typography>
 												
 												<div className={classes.fieldRow}>
@@ -897,7 +897,7 @@ const UserModal = ({ open, onClose, userId }) => {
 											<CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
 												<Typography className={classes.sectionTitle}>
 													<SettingsIcon className={classes.sectionIcon} />
-													Preferências
+													Preferencias
 												</Typography>
 												
 												<div className={classes.fieldRow}>
@@ -957,7 +957,7 @@ const UserModal = ({ open, onClose, userId }) => {
 											<CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
 												<Typography className={classes.sectionTitle}>
 													<MessageIcon className={classes.sectionIcon} />
-													Mensagem de Despedida
+													Mensaje de despedida
 												</Typography>
 												
 												<Field

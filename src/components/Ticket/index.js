@@ -133,7 +133,7 @@ useEffect(() => {
     }
 
     if (data.action === "delete") {
-      toast.success("Ticket encerrado com sucesso.");
+      toast.success("Ticket cerrado exitosamente.");
       history.push("/tickets");
     }
   });

@@ -627,7 +627,7 @@ const ContactLists = () => {
                         <a href={planilhaExemplo} download="planilha.xlsx">
                           <IconButton 
                             size="small" 
-                            title="Baixar Planilha Exemplo"
+                            title="Descargar Planilla Ejemplo"
                             className={classes.downloadIcon}
                           >
                             <DownloadIcon fontSize="small" />
@@ -659,7 +659,7 @@ const ContactLists = () => {
                             setDeletingContactList(contactList);
                           }}
                           className={classes.deleteIcon}
-                          title="Deletar Lista"
+                          title="Borrar Lista"
                         >
                           <DeleteOutlineIcon fontSize="small" />
                         </IconButton>

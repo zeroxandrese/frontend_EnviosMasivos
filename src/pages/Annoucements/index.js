@@ -375,7 +375,7 @@ const Announcements = () => {
   useEffect(() => {
     async function fetchData() {
       if (!user.super) {
-        toast.error("Esta empresa não possui permissão para acessar essa página! Estamos lhe redirecionando.");
+        toast.error("Esta empresa no tiene permiso para acceder a esta página! Le estamos redirigiendo.");
         setTimeout(() => {
           history.push(`/`)
         }, 1000);
@@ -563,7 +563,7 @@ const Announcements = () => {
                   {i18n.t("announcements.title")}
                 </Typography>
                 <Typography className={classes.headerSubtitle}>
-                  Gerencie comunicados e notificações do sistema
+                  Gestionar los anuncios y notificaciones del sistema.
                 </Typography>
               </div>
             </div>
@@ -628,7 +628,7 @@ const Announcements = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Comunicados Ativos
+                    Comunicados Activos
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.active}
@@ -642,7 +642,7 @@ const Announcements = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Alta Prioridade
+                    Alta Prioridad
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.highPriority}
@@ -656,7 +656,7 @@ const Announcements = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Com Mídia
+                    Con Media
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.withMedia}
@@ -780,10 +780,10 @@ const Announcements = () => {
                           <Box className={classes.emptyState}>
                             <AnnouncementIcon className={classes.emptyStateIcon} />
                             <Typography variant="h6" style={{ marginBottom: 8 }}>
-                              Nenhum comunicado encontrado
+                              No se encontraron anuncios
                             </Typography>
                             <Typography variant="body2">
-                              Crie seu primeiro comunicado para começar
+                              Crea tu primer anuncio para empezar.
                             </Typography>
                           </Box>
                         </TableCell>

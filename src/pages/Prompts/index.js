@@ -458,7 +458,7 @@ const Prompts = () => {
                   {i18n.t("prompts.title")}
                 </Typography>
                 <Typography className={classes.headerSubtitle}>
-                  Gerencie prompts de IA e configurações de tokens
+                  Gestiona las indicaciones de IA y la configuración de tokens.
                 </Typography>
               </div>
             </div>
@@ -468,7 +468,7 @@ const Prompts = () => {
           <Paper className={classes.filtersSection} elevation={0}>
             <Typography className={classes.filtersTitle}>
               <FilterList style={{ marginRight: 12 }} />
-              Buscar e Gerenciar Prompts
+              Buscar y Gerenciar Prompts
             </Typography>
             
             <div className={classes.filtersGroup}>
@@ -585,7 +585,7 @@ const Prompts = () => {
                     </Box>
                   </TableCell>
                   <TableCell align="center">
-                    Ações
+                    Comportamiento
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -601,7 +601,7 @@ const Prompts = () => {
                         </TableCell>
                         <TableCell align="left">
                           <Chip
-                            label={prompt.queue?.name || "Não definida"}
+                            label={prompt.queue?.name || "No definida"}
                             className={classes.queueChip}
                             size="small"
                             icon={<List fontSize="small" />}
@@ -609,7 +609,7 @@ const Prompts = () => {
                         </TableCell>
                         <TableCell align="left">
                           <Typography className={classes.tokensDisplay}>
-                            {prompt.maxTokens ? `${prompt.maxTokens} tokens` : "Não definido"}
+                            {prompt.maxTokens ? `${prompt.maxTokens} tokens` : "No definido"}
                           </Typography>
                         </TableCell>
                         <TableCell align="center">
@@ -647,10 +647,10 @@ const Prompts = () => {
                         <Box className={classes.emptyState}>
                           <Chat className={classes.emptyStateIcon} />
                           <Typography variant="h6" style={{ marginBottom: 8 }}>
-                            {searchParam ? "Nenhum prompt encontrado" : "Nenhum prompt cadastrado"}
+                            {searchParam ? "No se encontraron mensajes" : "No se registraron mensajes"}
                           </Typography>
                           <Typography variant="body2">
-                            {searchParam ? "Tente ajustar sua busca" : "Crie seu primeiro prompt para começar"}
+                            {searchParam ? "Intenta ajustar tu búsqueda" : "Crea tu primera sugerencia para comenzar"}
                           </Typography>
                         </Box>
                       </TableCell>

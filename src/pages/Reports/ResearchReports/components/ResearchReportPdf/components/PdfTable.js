@@ -57,10 +57,10 @@ const PdfTable = ({ research }) => {
         padding: 5
       }}>
         <Text style={{ width: '80%', textAlign: 'center', fontWeight: 'bold' }}>
-          Pergunta
+          Pregunta
         </Text>
         <Text style={{ width: '20%', textAlign: 'center', fontWeight: 'bold' }}>
-          Resposta
+          Respuesta
         </Text>
       </View>
       <View style={classes.secondHeader}>

@@ -419,7 +419,7 @@ const QrcodeModal = ({ open, onClose, whatsAppId }) => {
                         className={classes.stepImageAndroid} 
                       />
                     </span>
-                    {" "}ou em Configurações
+                    {" "}o en Configuración
                     <span className={classes.stepImages}>
                       <img 
                         src={require("../../components/QrcodeModal/img/WconfIos.png")} 
@@ -434,14 +434,14 @@ const QrcodeModal = ({ open, onClose, whatsAppId }) => {
                 <li className={classes.stepItem}>
                   <div className={classes.stepNumber}>3</div>
                   <div className={classes.stepText}>
-                    Toque em <strong>Dispositivos conectados</strong> e, em seguida, em <strong>Conectar dispositivo</strong>
+                    Pulsa en <strong>Dispositivos conectados</strong> y luego en <strong>Conectar dispositivo</strong>
                   </div>
                 </li>
                 
                 <li className={classes.stepItem}>
                   <div className={classes.stepNumber}>4</div>
                   <div className={classes.stepText}>
-                    Aponte seu celular para o QR Code ao lado para conectar
+                    Apunta tu teléfono al código QR que aparece junto a este texto para conectarte.
                   </div>
                 </li>
               </ul>
@@ -452,7 +452,7 @@ const QrcodeModal = ({ open, onClose, whatsAppId }) => {
               <HelpOutlineIcon className={classes.helpIcon} />
               <div className={classes.helpText}>
                 <Typography className={classes.helpTitle}>
-                  Precisa de ajuda?
+                  ¿Necesitar ayuda?
                 </Typography>
                 <Link 
                   href="https://faq.whatsapp.com/1317564962315842/?cms_platform=web" 
@@ -460,7 +460,7 @@ const QrcodeModal = ({ open, onClose, whatsAppId }) => {
                   rel="noopener noreferrer"
                   className={classes.helpLink}
                 >
-                  Consulte o guia oficial do WhatsApp
+                  Consulta la guía oficial de WhatsApp.
                 </Link>
               </div>
             </Box>

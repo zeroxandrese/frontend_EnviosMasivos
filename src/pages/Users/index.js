@@ -535,7 +535,7 @@ const Users = () => {
                   {i18n.t("users.title")}
                 </Typography>
                 <Typography className={classes.headerSubtitle}>
-                  Gerencie usuários e permissões do sistema
+                  Administrar los usuarios y permisos del sistema.
                 </Typography>
               </div>
             </div>
@@ -545,7 +545,7 @@ const Users = () => {
           <Paper className={classes.filtersSection} elevation={0}>
             <Typography className={classes.filtersTitle}>
               <FilterListIcon style={{ marginRight: 12 }} />
-              Buscar e Gerenciar Usuários
+              Buscar y Gerenciar Usuários
             </Typography>
             
             <div className={classes.filtersGroup}>
@@ -631,7 +631,7 @@ const Users = () => {
                     Status Online
                   </Typography>
                   <Typography className={classes.statValue}>
-                    Ativo
+                    Activo
                   </Typography>
                 </div>
               </div>
@@ -784,10 +784,10 @@ const Users = () => {
                           <Box className={classes.emptyState}>
                             <PeopleIcon className={classes.emptyStateIcon} />
                             <Typography variant="h6" style={{ marginBottom: 8 }}>
-                              Nenhum usuário encontrado
+                              No se encontraron usuarios
                             </Typography>
                             <Typography variant="body2">
-                              Crie seu primeiro usuário para começar
+                              Crea tu primer usuario para empezar.
                             </Typography>
                           </Box>
                         </TableCell>

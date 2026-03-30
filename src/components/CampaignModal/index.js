@@ -644,7 +644,7 @@ const CampaignModal = ({
         variant="outlined"
         size="small"
         className={classes.textField}
-        helperText="Utilize variáveis como {nome}, {numero}, {email} ou defina variáveis personalizadas."
+        helperText="Utilice variables como {nome}, {numero}, {email} o definir variables personalizadas."
         disabled={!campaignEditable && campaign.status !== "CANCELADA"}
       />
     );

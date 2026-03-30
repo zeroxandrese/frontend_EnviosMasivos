@@ -696,10 +696,10 @@ export default function Options(props) {
             <Tune className={classes.headerIcon} />
             <div>
               <Typography className={classes.headerTitle}>
-                Configurações Avançadas
+                Configuración avanzada
               </Typography>
               <Typography className={classes.headerSubtitle}>
-                Configure o comportamento detalhado do sistema
+                Configure el comportamiento detallado del sistema.
               </Typography>
             </div>
           </div>
@@ -709,10 +709,10 @@ export default function Options(props) {
         <Paper className={classes.filtersSection} elevation={0}>
           <Typography className={classes.filtersTitle}>
             <FilterList style={{ marginRight: 12 }} />
-            Buscar Configurações
+            Configuración de búsqueda
           </Typography>
           <TextField
-            placeholder="Buscar configuração..."
+            placeholder="Buscar configuración..."
             type="search"
             value={searchParam}
             onChange={handleSearch}
@@ -738,7 +738,7 @@ export default function Options(props) {
               </div>
               <div className={classes.statContent}>
                 <Typography className={classes.statTitle}>
-                  Total Configurações
+                  Configuraciones totales
                 </Typography>
                 <Typography className={classes.statValue}>
                   {stats.total}
@@ -780,10 +780,10 @@ export default function Options(props) {
               </div>
               <div className={classes.statContent}>
                 <Typography className={classes.statTitle}>
-                  LGPD Ativo
+                  LGPD Activo
                 </Typography>
                 <Typography className={classes.statValue}>
-                  {stats.lgpdEnabled ? 'Sim' : 'Não'}
+                  {stats.lgpdEnabled ? 'Si' : 'No'}
                 </Typography>
               </div>
             </div>
@@ -794,7 +794,7 @@ export default function Options(props) {
         <Paper className={classes.section} elevation={0}>
           <Typography className={classes.sectionTitle}>
             <Business style={{ marginRight: 12 }} />
-            Configurações Gerais
+            Configuraciones generales
           </Typography>
           
           <Grid container spacing={3}>
@@ -841,7 +841,7 @@ export default function Options(props) {
         <Paper className={classes.section} elevation={0}>
           <Typography className={classes.sectionTitle}>
             <Assignment style={{ marginRight: 12 }} />
-            Configurações de Atendimento
+            Configuración de servicio
           </Typography>
           
           <Grid container spacing={3}>
@@ -907,7 +907,7 @@ export default function Options(props) {
         <Paper className={classes.section} elevation={0}>
           <Typography className={classes.sectionTitle}>
             <Chat style={{ marginRight: 12 }} />
-            Configurações WhatsApp
+            Configuración de WhatsApp
           </Typography>
           
           <Grid container spacing={3}>
@@ -933,7 +933,7 @@ export default function Options(props) {
         <Paper className={classes.section} elevation={0}>
           <Typography className={classes.sectionTitle}>
             <Settings style={{ marginRight: 12 }} />
-            Configurações do Bot
+            Configuración de Bot
           </Typography>
           
           <Grid container spacing={3}>
@@ -964,7 +964,7 @@ export default function Options(props) {
         <Paper className={classes.section} elevation={0}>
           <Typography className={classes.sectionTitle}>
             <Security style={{ marginRight: 12 }} />
-            LGPD - Lei Geral de Proteção de Dados
+            LGPD - Ley General de Protección de Datos
           </Typography>
           
           <Grid container spacing={3}>

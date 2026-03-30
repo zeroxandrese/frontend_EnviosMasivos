@@ -260,7 +260,7 @@ export function HelpManagerForm(props) {
         <Paper className={classes.formSection} elevation={0}>
             <Typography className={classes.formTitle}>
                 <AddIcon style={{ marginRight: 12 }} />
-                Configurar Ajuda
+                Configurar ayuda
             </Typography>
             
             <Formik
@@ -366,7 +366,7 @@ export function HelpsManagerGrid(props) {
                             <TableCell align="center" style={{ width: '1%' }}>
                                 <Box display="flex" alignItems="center" justifyContent="center">
                                     <EditIcon style={{ marginRight: 8, color: "#64748b" }} />
-                                    Ações
+                                    Comportamiento
                                 </Box>
                             </TableCell>
                             <TableCell align="left">
@@ -425,10 +425,10 @@ export function HelpsManagerGrid(props) {
                                     <Box className={classes.emptyState}>
                                         <HelpIcon className={classes.emptyStateIcon} />
                                         <Typography variant="h6" style={{ marginBottom: 8 }}>
-                                            Nenhuma ajuda encontrada
+                                            No se encontró ayuda
                                         </Typography>
                                         <Typography variant="body2">
-                                            Crie sua primeira ajuda para começar
+                                            Crea tu primera ayuda para empezar.
                                         </Typography>
                                     </Box>
                                 </TableCell>
@@ -468,7 +468,7 @@ export default function HelpsManager() {
             const helpList = await list()
             setRecords(helpList)
         } catch (e) {
-            toast.error('Não foi possível carregar a lista de registros')
+            toast.error('No se pudo cargar la lista de registros.')
         }
         setLoading(false)
     }
@@ -483,9 +483,9 @@ export default function HelpsManager() {
             }
             await loadHelps()
             handleCancel()
-            toast.success('Operação realizada com sucesso!')
+            toast.success('Operación realizada con éxito!')
         } catch (e) {
-            toast.error('Não foi possível realizar a operação. Verifique se já existe uma helpo com o mesmo nome ou se os campos foram preenchidos corretamente')
+            toast.error('No se pudo completar la operación. Compruebe si ya existe una ayuda con el mismo nombre o si los campos se han rellenado correctamente.')
         }
         setLoading(false)
     }
@@ -496,9 +496,9 @@ export default function HelpsManager() {
             await remove(record.id)
             await loadHelps()
             handleCancel()
-            toast.success('Operação realizada com sucesso!')
+            toast.success('Operación realizada con éxito!')
         } catch (e) {
-            toast.error('Não foi possível realizar a operação')
+            toast.error('La operación no pudo completarse.')
         }
         setLoading(false)
     }
@@ -534,10 +534,10 @@ export default function HelpsManager() {
                         <HelpIcon className={classes.headerIcon} />
                         <div>
                             <Typography className={classes.headerTitle}>
-                                Gerenciar Ajudas
+                                Administrar ayuda
                             </Typography>
                             <Typography className={classes.headerSubtitle}>
-                                Configure tutoriais e vídeos de ajuda para usuários
+                                Configurar tutoriales y vídeos de ayuda para los usuarios.
                             </Typography>
                         </div>
                     </div>
@@ -563,12 +563,12 @@ export default function HelpsManager() {
                 </Grid>
                 
                 <ConfirmationModal
-                    title="Exclusão de Registro"
+                    title="Eliminación de registro"
                     open={showConfirmDialog}
                     onClose={() => setShowConfirmDialog(false)}
                     onConfirm={() => handleDelete()}
                 >
-                    Deseja realmente excluir esse registro?
+                    ¿De verdad quieres eliminar este registro?
                 </ConfirmationModal>
             </Container>
         </div>

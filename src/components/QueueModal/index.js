@@ -556,7 +556,7 @@ const QueueModal = ({ open, onClose, queueId, onEdit }) => {
   };
 
   const handleSaveSchedules = async (values) => {
-    toast.success("Clique em salvar para registar as alterações");
+    toast.success("Haz clic en guardar para registrar los cambios.");
     setSchedules(values);
     setTab(0);
   };
@@ -690,7 +690,7 @@ const QueueModal = ({ open, onClose, queueId, onEdit }) => {
                     <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                       <Typography className={classes.sectionTitle}>
                         <SettingsIcon className={classes.sectionIcon} />
-                        Configurações da Fila
+                        Configuración de cola
                       </Typography>
                       
                       <div className={classes.fieldRow}>
@@ -913,7 +913,7 @@ const QueueModal = ({ open, onClose, queueId, onEdit }) => {
                     <CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
                       <Typography className={classes.sectionTitle}>
                         <MessageIcon className={classes.sectionIcon} />
-                        Mensagens da Fila
+                        Mensajes en cola
                       </Typography>
                       
                       <Field

@@ -304,7 +304,7 @@ const Kanban = () => {
       await api.delete(`/ticket-tags/${targetLaneId}`);
       toast.success('Ticket Tag Removido!');
       await api.put(`/ticket-tags/${targetLaneId}/${sourceLaneId}`);
-      toast.success('Ticket Tag Adicionado com Sucesso!');
+      toast.success('Etiqueta de ticket añadida correctamente!');
     } catch (err) {
       console.log(err);
     }
@@ -323,7 +323,7 @@ const Kanban = () => {
                 Kanban Board
               </Typography>
               <Typography className={classes.headerSubtitle}>
-                Gerencie tickets visualmente através do quadro Kanban organizados por tags
+                Gestiona las incidencias visualmente mediante el tablero Kanban, organizado por etiquetas.
               </Typography>
             </div>
           </div>

@@ -492,7 +492,7 @@ const QueueIntegration = () => {
                   {i18n.t("queueIntegration.title")}
                 </Typography>
                 <Typography className={classes.headerSubtitle}>
-                  Gerencie integrações com sistemas externos
+                  Gestionar las integraciones con sistemas externos.
                 </Typography>
               </div>
             </div>
@@ -502,7 +502,7 @@ const QueueIntegration = () => {
           <Paper className={classes.filtersSection} elevation={0}>
             <Typography className={classes.filtersTitle}>
               <FilterList style={{ marginRight: 12 }} />
-              Buscar e Gerenciar Integrações
+              Buscar y gestionar integraciones
             </Typography>
             
             <div className={classes.filtersGroup}>
@@ -543,7 +543,7 @@ const QueueIntegration = () => {
                 </div>
                 <div className={classes.statContent}>
                   <Typography className={classes.statTitle}>
-                    Total Integrações
+                    Integraciones totales
                   </Typography>
                   <Typography className={classes.statValue}>
                     {stats.total}
@@ -626,7 +626,7 @@ const QueueIntegration = () => {
                       </Box>
                     </TableCell>
                     <TableCell align="center">
-                      Ações
+                      Comportamiento
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -704,10 +704,10 @@ const QueueIntegration = () => {
                           <Box className={classes.emptyState}>
                             <SettingsInputComponent className={classes.emptyStateIcon} />
                             <Typography variant="h6" style={{ marginBottom: 8 }}>
-                              {searchParam ? "Nenhuma integração encontrada" : "Nenhuma integração configurada"}
+                              {searchParam ? "No se encontrarán integraciones." : "No hay integraciones configuradas"}
                             </Typography>
                             <Typography variant="body2">
-                              {searchParam ? "Tente ajustar sua busca" : "Configure sua primeira integração para começar"}
+                              {searchParam ? "Intenta ajustar tu búsqueda" : "Configura tu primera integración para empezar."}
                             </Typography>
                           </Box>
                         </TableCell>

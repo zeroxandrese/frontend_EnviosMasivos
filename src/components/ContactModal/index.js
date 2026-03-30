@@ -535,7 +535,7 @@ const ContactModal = ({ open, onClose, contactId, initialValues, onSave }) => {
 									<CardContent style={{ padding: "16px", paddingBottom: "16px" }}>
 										<Typography className={classes.sectionTitle}>
 											<SettingsIcon className={classes.sectionIcon} />
-											Configurações do Chatbot
+											Configuración del Chatbot
 										</Typography>
 										
 										<Box className={classes.switchContainer}>

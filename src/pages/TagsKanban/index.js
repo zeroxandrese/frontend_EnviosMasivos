@@ -437,7 +437,7 @@ const Tags = () => {
                   {i18n.t("tagsKanban.title")}
                 </Typography>
                 <Typography className={classes.headerSubtitle}>
-                  Gerencie tags e etiquetas para organização de tickets ({tags.length} tags)
+                  Gestiona las etiquetas y los rótulos para la organización de los tickets. ({tags.length} tags)
                 </Typography>
               </div>
             </div>
@@ -500,7 +500,7 @@ const Tags = () => {
                           {i18n.t("tagsKanban.table.tickets")}
                         </Box>
                       </TableCell>
-                      <TableCell align="center">Ações</TableCell>
+                      <TableCell align="center">Comportamiento</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody onScroll={handleScroll}>

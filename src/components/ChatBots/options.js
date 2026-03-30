@@ -228,7 +228,7 @@ export default function VerticalLinearStepper(props) {
         onClose={handleCloseConfirmationModal}
         onConfirm={() => handleDeleteQueue(selectedQueue.id)}
       >
-        {i18n.t("Tem certeza? Todas as opções internas também serão excluídas")}
+        {i18n.t("¿Estás seguro? Todas las opciones internas también quedarán excluidas.")}
       </ConfirmationModal>
 
       {!loading && (
@@ -368,8 +368,8 @@ export default function VerticalLinearStepper(props) {
                               <StepContent>
                                 <>
                                   <CustomToolTip
-                                    title="A mensagem é obrigatória para seguir ao próximo nível"
-                                    content="Se a mensagem não estiver definida, o bot não seguirá adiante"
+                                    title="El mensaje es necesario para pasar al siguiente nivel."
+                                    content="Si el mensaje no está definido, el bot no continuará."
                                   >
                                     <HelpOutlineOutlinedIcon
                                       color="secondary"
@@ -442,7 +442,7 @@ export default function VerticalLinearStepper(props) {
                                             }
                                             className={classes.textField}
                                           />
-                                          <InputLabel>{"Selecione uma Fila"}</InputLabel>
+                                          <InputLabel>{"Seleccione un cola"}</InputLabel>
                                           <Field
                                               as={Select}
                                               name={`options[${index}].optQueueId`}
@@ -479,7 +479,7 @@ export default function VerticalLinearStepper(props) {
                                             }
                                             className={classes.textField}
                                           />
-                                          <InputLabel>{"Selecione uma Usuário"}</InputLabel>
+                                          <InputLabel>{"Seleccione un Usuario"}</InputLabel>
                                           <Field
                                               as={Select}
                                               name={`options[${index}].optUserId`}
@@ -495,7 +495,7 @@ export default function VerticalLinearStepper(props) {
                                                   </MenuItem>
                                                 ))}
                                           </Field>
-                                          <InputLabel>{"Selecione uma Fila"}</InputLabel>
+                                          <InputLabel>{"Selecione una Cola"}</InputLabel>
                                           <Field
                                               as={Select}
                                               name={`options[${index}].optQueueId`}
@@ -532,7 +532,7 @@ export default function VerticalLinearStepper(props) {
                                             }
                                             className={classes.textField}
                                           />
-                                          <InputLabel>{"Selecione uma Integração"}</InputLabel>
+                                          <InputLabel>{"Seleccione una Integración"}</InputLabel>
                                           <Field
                                               as={Select}
                                               name={`options[${index}].optIntegrationId`}
@@ -569,7 +569,7 @@ export default function VerticalLinearStepper(props) {
                                             }
                                             className={classes.textField}
                                           />
-                                          <InputLabel>{"Selecione um Archivo"}</InputLabel>
+                                          <InputLabel>{"Seleccione un Archivo"}</InputLabel>
                                           <Field
                                               as={Select}
                                               name={`options[${index}].optFileId`}

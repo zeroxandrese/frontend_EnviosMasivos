@@ -61,7 +61,7 @@ const ZDGKanban = () => {
 			const responseTicketStatus = await api.get("/tickets/" + ticketId);
 			return responseTicketStatus.data.status;
 		}catch(e){
-			console.log(ticketId + ' ticket não existe mais na base.')
+			console.log(ticketId + ' ticket no existe en la base.')
 		}
 	}
 
@@ -96,7 +96,7 @@ const ZDGKanban = () => {
 			lanes: await Promise.all(lanes)
 		  };
 		} catch (error) {
-		  console.error('Ocorreu um erro na requisição GET:', error);
+		  console.error('Se produjo un error en la solicitud GET:', error);
 		  return file;
 		}
 	}

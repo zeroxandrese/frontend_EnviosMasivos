@@ -124,7 +124,7 @@ export default function ChatList({
         onClose={setConfirmModalOpen}
         onConfirm={handleDelete}
       >
-        Esta ação não pode ser revertida, confirmar?
+        Esta acción no se puede revertir, ¿puede confirmarlo?
       </ConfirmationModal>
 
       <div className={classes.mainContainer}>

@@ -318,7 +318,7 @@ const Settings = () => {
                 {i18n.t("settings.title")}
               </Typography>
               <Typography className={classes.headerSubtitle}>
-                Configure as opções do sistema e preferências
+                Configurar las opciones y preferencias del sistema.
               </Typography>
             </div>
           </div>
@@ -333,7 +333,7 @@ const Settings = () => {
               </div>
               <div className={classes.statContent}>
                 <Typography className={classes.statTitle}>
-                  Total Configurações
+                  Configuraciones totales
                 </Typography>
                 <Typography className={classes.statValue}>
                   {stats.total}
@@ -375,7 +375,7 @@ const Settings = () => {
               </div>
               <div className={classes.statContent}>
                 <Typography className={classes.statTitle}>
-                  Configurações de Segurança
+                  Configuración de seguridad
                 </Typography>
                 <Typography className={classes.statValue}>
                   {stats.security}
@@ -389,7 +389,7 @@ const Settings = () => {
         <Paper className={classes.settingsSection} elevation={0}>
           <Typography className={classes.sectionTitle}>
             <Tune style={{ marginRight: 12 }} />
-            Configurações do Sistema
+            Configuración del sistema
           </Typography>
           
           {/* Configuração de Criação de Usuário */}
@@ -403,7 +403,7 @@ const Settings = () => {
             </div>
             
             <Typography className={classes.settingDescription}>
-              Controla se novos usuários podem ser criados no sistema. Quando desabilitado, apenas administradores podem criar contas.
+              Controla si se pueden crear nuevos usuarios en el sistema. Cuando está desactivada, solo los administradores pueden crear cuentas.
             </Typography>
             
             <FormControl variant="outlined" className={classes.selectControl}>
@@ -439,16 +439,16 @@ const Settings = () => {
             <div className={classes.settingHeader}>
               <div className={classes.settingTitle}>
                 <Security className={classes.settingIcon} />
-                Configurações de Segurança
+                Configuración de seguridad
               </div>
               <div className={classes.enabledBadge}>
                 <ToggleOn fontSize="small" />
-                Em Breve
+                Dentro de poco
               </div>
             </div>
             
             <Typography className={classes.settingDescription}>
-              Configurações avançadas de segurança e autenticação estarão disponíveis em futuras atualizações.
+              En futuras actualizaciones estarán disponibles ajustes avanzados de seguridad y autenticación.
             </Typography>
           </Card>
           

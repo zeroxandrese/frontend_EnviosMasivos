@@ -531,7 +531,7 @@ function SignUp() {
                   {/* Nome da Empresa */}
                   <div>
                     <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#e5e7eb', marginBottom: '0.5rem' }}>
-                      Nome da Empresa
+                      Nombre de Empresa
                     </label>
                     <div style={{ position: 'relative' }}>
                       <div style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af', zIndex: 1 }}>
@@ -555,7 +555,7 @@ function SignUp() {
                   <div className="form-row">
                     <div>
                       <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#e5e7eb', marginBottom: '0.5rem' }}>
-                        Nome Completo
+                        Nombre completo
                       </label>
                       <div style={{ position: 'relative' }}>
                         <div style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af', zIndex: 1 }}>
@@ -624,7 +624,7 @@ function SignUp() {
 
                     <div>
                       <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#e5e7eb', marginBottom: '0.5rem' }}>
-                        Senha
+                        Contraseña
                       </label>
                       <div style={{ position: 'relative' }}>
                         <div style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af', zIndex: 1 }}>
@@ -686,7 +686,7 @@ function SignUp() {
                   {/* Seletor de Plano */}
                   <div>
                     <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#e5e7eb', marginBottom: '0.5rem' }}>
-                      Plano
+                      Plan
                     </label>
                     <div 
                       style={{
@@ -828,7 +828,7 @@ function SignUp() {
                           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#10B0D7' }}>
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                           </svg>
-                          <span>{plan.queues} Filas</span>
+                          <span>{plan.queues} Colas</span>
                         </div>
                       </div>
                       

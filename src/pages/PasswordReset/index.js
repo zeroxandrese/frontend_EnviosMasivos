@@ -99,11 +99,11 @@ const ResetPasswordPage = () => {
         }
       } else {
         setUserFound(false);
-        toastError("Usuário não cadastrado.");
+        toastError("Usuario no registrado.");
       }
     } catch (error) {
       console.error("Erro ao buscar usuários:", error);
-      toastError("Erro ao buscar usuários.");
+      toastError("Usuario no registrado.");
     }
   };
 
@@ -115,7 +115,7 @@ const ResetPasswordPage = () => {
       setUserId(userId);
       setShowEmailInput(false);
       setUserFound(true);
-      toast.success("Código de verificação enviado com sucesso!");
+      toast.success("Código de verificación enviado correctamente!");
     } catch (error) {
       toastError(error.response.data.error);
     } finally {
@@ -134,19 +134,19 @@ const ResetPasswordPage = () => {
         setShowVerifyButton(false);
         setShowSuccessMessage(true);
       } else {
-        toastError("Código de verificação inválido. A senha não pode ser alterada.");
+        toastError("Código de verificación no válido. No se puede cambiar la contraseña.");
         setCodeIncorrect(true);
         setVerificationAttempts(verificationAttempts + 1);
       }
     } catch (error) {
-      console.error("Erro ao verificar código:", error);
-      toastError("Erro ao verificar código.");
+      console.error("Error al verificar código:", error);
+      toastError("Código de comprobación de errores.");
     } finally {
       setLoading(false);
     }
 
     if (codeIncorrect) {
-      toastError("Código de verificação incorreto. Tente novamente.");
+      toastError("Código de verificación incorrecto. Inténtalo de nuevo.");
 
       if (verificationAttempts >= 2) {
         toastError("Tentativas excedidas. Redirecionando...");
@@ -171,19 +171,19 @@ const ResetPasswordPage = () => {
       try {
         await api.put("/api/atualizar-senha", { userId, newPassword });
 
-        toast.success("Senha atualizada com sucesso!");
+        toast.success("Contraseña actualizada exitosamente!");
 
         setTimeout(() => {
           history.push("/login");
         }, 1000);
       } catch (err) {
-        console.error("Erro ao salvar senha:", err);
-        toastError("Erro ao salvar senha.");
+        console.error("Error al guardar la contraseña:", err);
+        toastError("Error al guardar la contraseña.");
       } finally {
         setLoading(false);
       }
     } else {
-      console.error("Usuário não encontrado ou código de verificação inválido");
+      console.error("Usuario no encontrado o código de verificación inválido.");
     }
   };
 
@@ -552,7 +552,7 @@ const ResetPasswordPage = () => {
                 {/* Verification Code Input */}
                 <div style={{ marginBottom: '1rem' }}>
                   <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#e5e7eb', marginBottom: '0.5rem' }}>
-                    Código de Verificação
+                    Código de verificación
                   </label>
                   <div style={{ position: 'relative' }}>
                     <div style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af', zIndex: 1 }}>
@@ -605,7 +605,7 @@ const ResetPasswordPage = () => {
                     marginBottom: '1rem',
                     textAlign: 'center'
                   }}>
-                    ✓ Código validado com sucesso
+                    ✓ Código validado correctamente
                   </div>
                 )}
 
@@ -614,7 +614,7 @@ const ResetPasswordPage = () => {
                   <>
                     <div style={{ marginBottom: '1rem' }}>
                       <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#e5e7eb', marginBottom: '0.5rem' }}>
-                        Nova Senha
+                        Nueva contraseña
                       </label>
                       <div style={{ position: 'relative' }}>
                         <div style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af', zIndex: 1 }}>
@@ -665,7 +665,7 @@ const ResetPasswordPage = () => {
                           <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
                           </svg>
-                          Salvar Senha
+                          Guardar contraseña
                         </>
                       )}
                     </button>

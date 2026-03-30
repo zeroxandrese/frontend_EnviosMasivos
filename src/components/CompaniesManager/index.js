@@ -445,7 +445,7 @@ export function CompanyForm(props) {
       <Paper className={classes.formSection} elevation={0}>
         <Typography className={classes.sectionTitle}>
           <Add style={{ marginRight: 12 }} />
-          {record.id ? 'Editar Empresa' : 'Nova Empresa'}
+          {record.id ? 'Editar Empresa' : 'Nueva Empresa'}
         </Typography>
         
         <Formik
@@ -897,7 +897,7 @@ export default function CompaniesManager() {
       const companyList = await list();
       setRecords(companyList);
     } catch (e) {
-      toast.error("Não foi possível carregar a lista de registros");
+      toast.error("No se pudo cargar la lista de registros");
     }
     setLoading(false);
   };
@@ -912,10 +912,10 @@ export default function CompaniesManager() {
       }
       await loadPlans();
       handleCancel();
-      toast.success("Operação realizada com sucesso!");
+      toast.success("Operación realizada con éxito!");
     } catch (e) {
       toast.error(
-        "Não foi possível realizar a operação. Verifique se já existe uma empresa com o mesmo nome ou se os campos foram preenchidos corretamente"
+        "No se pudo completar la operación. Por favor, compruebe si ya existe una empresa con el mismo nombre o si los campos se han rellenado correctamente"
       );
     }
     setLoading(false);
@@ -927,9 +927,9 @@ export default function CompaniesManager() {
       await remove(record.id);
       await loadPlans();
       handleCancel();
-      toast.success("Operação realizada com sucesso!");
+      toast.success("Operación realizada con éxito!");
     } catch (e) {
-      toast.error("Não foi possível realizar a operação");
+      toast.error("La operación no pudo completarse");
     }
     setLoading(false);
   };
@@ -1014,10 +1014,10 @@ export default function CompaniesManager() {
             <Business className={classes.headerIcon} />
             <div>
               <Typography className={classes.headerTitle}>
-                Gerenciamento de Empresas
+                Gestión Empresarial
               </Typography>
               <Typography className={classes.headerSubtitle}>
-                Gerencie empresas, planos e configurações
+                Gestionar empresas, planes y configuraciones.
               </Typography>
             </div>
           </div>
@@ -1030,7 +1030,7 @@ export default function CompaniesManager() {
             Buscar Empresas
           </Typography>
           <TextField
-            placeholder="Buscar por nome, email, telefone ou plano..."
+            placeholder="Buscar por nombre, correo electrónico, número de teléfono o plan..."
             type="search"
             value={searchParam}
             onChange={handleSearch}
@@ -1070,7 +1070,7 @@ export default function CompaniesManager() {
               </div>
               <div className={classes.statContent}>
                 <Typography className={classes.statTitle}>
-                  Ativas
+                  Activas
                 </Typography>
                 <Typography className={classes.statValue}>
                   {stats.active}
@@ -1084,7 +1084,7 @@ export default function CompaniesManager() {
               </div>
               <div className={classes.statContent}>
                 <Typography className={classes.statTitle}>
-                  Inativas
+                  Inactivas
                 </Typography>
                 <Typography className={classes.statValue}>
                   {stats.inactive}
@@ -1098,7 +1098,7 @@ export default function CompaniesManager() {
               </div>
               <div className={classes.statContent}>
                 <Typography className={classes.statTitle}>
-                  Próximas ao Vencimento
+                  Fecha de vencimiento próxima
                 </Typography>
                 <Typography className={classes.statValue}>
                   {stats.expiring}
@@ -1125,12 +1125,12 @@ export default function CompaniesManager() {
 
         {/* Modal de Confirmação */}
         <ConfirmationModal
-          title="Exclusão de Registro"
+          title="Eliminación de registro"
           open={showConfirmDialog}
           onClose={() => setShowConfirmDialog(false)}
           onConfirm={() => handleDelete()}
         >
-          Deseja realmente excluir esse registro?
+          ¿De verdad quieres eliminar este registro?
         </ConfirmationModal>
       </Container>
     </div>

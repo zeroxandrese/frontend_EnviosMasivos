@@ -41,7 +41,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
+
     try {
       await handleLogin({ email, password });
       showToast('Login realizado com sucesso!', 'success');
@@ -67,7 +67,7 @@ const Login = () => {
   const handleToggleRemember = () => {
     const newRememberMe = !rememberMe;
     setRememberMe(newRememberMe);
-    
+
     if (newRememberMe) {
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
@@ -91,7 +91,11 @@ const Login = () => {
     alignItems: 'center',
     justifyContent: 'center',
     padding: '1rem',
-    background: '#050A1B',
+    background: `
+    radial-gradient(circle at 20% 20%, rgba(16,176,215,0.15), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(27,176,140,0.15), transparent 40%),
+    linear-gradient(135deg, #0B1120, #111827)
+  `,
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
     position: 'relative',
     overflow: 'hidden'
@@ -266,18 +270,19 @@ const Login = () => {
   ];
 
   const cardStyle = {
-    background: 'rgba(30, 30, 50, 0.8)',
+    background: 'rgba(17, 24, 39, 0.75)',
     backdropFilter: 'blur(20px)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    borderRadius: '24px',
-    padding: '2rem',
-    boxShadow: '0 25px 45px rgba(0, 0, 0, 0.3)',
-    transition: 'all 0.3s ease',
+    border: '1px solid rgba(255, 255, 255, 0.06)',
+    borderRadius: '20px',
+    padding: '2.5rem',
+    boxShadow: `
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255,255,255,0.05)
+  `,
     position: 'relative',
     zIndex: 10,
     width: '100%',
-    maxWidth: '28rem',
-    animation: 'fadeIn 0.8s ease-out'
+    maxWidth: '28rem'
   };
 
   const inputStyle = {
@@ -286,8 +291,8 @@ const Login = () => {
     paddingRight: '3rem',
     paddingTop: '0.75rem',
     paddingBottom: '0.75rem',
-    background: 'rgba(255, 255, 255, 0.1)',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
+    background: 'rgba(255, 255, 255, 0.05)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
     borderRadius: '0.75rem',
     color: 'white',
     fontSize: '1rem',
@@ -300,16 +305,17 @@ const Login = () => {
     background: 'linear-gradient(135deg, #10B0D7, #1BB08C)',
     color: 'white',
     border: 'none',
-    padding: '0.75rem 1rem',
+    padding: '0.85rem 1rem',
     borderRadius: '0.75rem',
     fontSize: '1rem',
-    fontWeight: '500',
+    fontWeight: '600',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
+    transition: 'all 0.25s ease',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '0.5rem'
+    gap: '0.5rem',
+    boxShadow: '0 10px 20px rgba(16,176,215,0.25)'
   };
 
   const toggleStyle = {
@@ -367,25 +373,20 @@ const Login = () => {
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         body { background: #050A1B !important; margin: 0; padding: 0; }
       `}</style>
-      
+
       <div style={containerStyle}>
         {/* Animated Lights Background */}
-        <div style={lightsBgStyle}>
-          {lightStyles.map((style, index) => (
-            <div key={index} style={style}></div>
-          ))}
-        </div>
-        
-        {/* Geometric Shapes */}
-        <div style={geometricShapesStyle}>
-          {squareStyles.map((style, index) => (
-            <div key={`square-${index}`} style={style}></div>
-          ))}
-          {circleStyles.map((style, index) => (
-            <div key={`circle-${index}`} style={style}></div>
-          ))}
-        </div>
-        
+        <div style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "3px",
+          background: "linear-gradient(90deg, #10B0D7, #1BB08C)",
+          borderTopLeftRadius: "20px",
+          borderTopRightRadius: "20px"
+        }} />
+
         {/* Login Card */}
         <div style={cardStyle}>
           {/* Header */}
@@ -400,7 +401,7 @@ const Login = () => {
                 marginBottom: '0.5rem',
                 margin: 0
               }}>
-                
+
               </h1>
               <div style={{
                 width: '80px',
@@ -413,7 +414,7 @@ const Login = () => {
             <h2 style={{ fontSize: '1.25rem', fontWeight: '600', color: 'white', marginBottom: '0.5rem', margin: '0 0 0.5rem 0' }}>Bienvenido</h2>
             <p style={{ color: '#e5e7eb', fontSize: '0.875rem', margin: 0 }}>Entre con su contraseña para continuar</p>
           </div>
-          
+
           {/* Login Form */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {/* Email Field */}
@@ -427,17 +428,19 @@ const Login = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
                 </div>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   value={email}
                   onChange={(e) => handleChangeInput(e, 'email')}
                   onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}
                   style={inputStyle}
                   placeholder="seu@email.com"
+                  onFocus={(e) => e.target.style.border = '1px solid #10B0D7'}
+                  onBlur={(e) => e.target.style.border = '1px solid rgba(255,255,255,0.1)'}
                 />
               </div>
             </div>
-            
+
             {/* Password Field */}
             <div>
               <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#e5e7eb', marginBottom: '0.5rem' }}>
@@ -449,13 +452,15 @@ const Login = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                   </svg>
                 </div>
-                <input 
+                <input
                   type={passwordVisible ? "text" : "password"}
                   value={password}
                   onChange={(e) => handleChangeInput(e, 'password')}
                   onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}
                   style={inputStyle}
                   placeholder="••••••••"
+                  onFocus={(e) => e.target.style.border = '1px solid #10B0D7'}
+                  onBlur={(e) => e.target.style.border = '1px solid rgba(255,255,255,0.1)'}
                 />
                 <button
                   type="button"
@@ -475,7 +480,7 @@ const Login = () => {
                 </button>
               </div>
             </div>
-            
+
             {/* Remember Me & Forgot Password */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.875rem' }}>
               <label style={{ display: 'flex', alignItems: 'center', color: '#e5e7eb', cursor: 'pointer' }} onClick={handleToggleRemember}>
@@ -492,15 +497,23 @@ const Login = () => {
                 ¿Olvidaste tu contraseña?
               </button>
             </div>
-            
+
             {/* Login Button */}
-            <button 
+            <button
               onClick={handleSubmit}
               disabled={loading || !email.trim() || !password.trim()}
               style={{
                 ...buttonStyle,
                 opacity: (loading || !email.trim() || !password.trim()) ? 0.6 : 1,
                 cursor: (loading || !email.trim() || !password.trim()) ? 'not-allowed' : 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow = "0 15px 30px rgba(16,176,215,0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 10px 20px rgba(16,176,215,0.25)";
               }}
             >
               {loading ? (
@@ -515,11 +528,11 @@ const Login = () => {
               )}
             </button>
           </div>
-          
+
           {/* Sign Up Link */}
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
             <p style={{ color: '#9ca3af', fontSize: '0.875rem', margin: 0 }}>
-              ¿No tienes una cuenta? 
+              ¿No tienes una cuenta?
               <button
                 type="button"
                 style={{ background: 'none', border: 'none', color: '#10B0D7', fontWeight: '500', cursor: 'pointer', transition: 'color 0.2s ease', marginLeft: '4px', fontSize: '0.875rem' }}
@@ -530,7 +543,7 @@ const Login = () => {
             </p>
           </div>
         </div>
-        
+
         {/* Toast Notification */}
         {toastState.show && (
           <div style={toastStyle}>
